@@ -10,6 +10,9 @@
             <i class="fa-solid fa-envelope"></i>
             <input type="email" class="form-control inp-field shadow-sm" placeholder="Email">
             </div>
+            <div class="input-wrapper">
+            <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{ length: 5 }"></ng-otp-input>
+            </div>
             <button class="login-btn">Submit</button>
         </div>
     </div>

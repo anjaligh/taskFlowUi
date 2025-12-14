@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
+ onOtpChange(event:any){
+  console.log(event);
+  
+ }
 }
