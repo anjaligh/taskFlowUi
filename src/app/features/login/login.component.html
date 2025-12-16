@@ -1,19 +1,33 @@
 <div class="container-fluid page-center">
     <div class="login-container">
-        <div class="icon-div shadow-sm">
+        <div class="icon-div shadow-sm" *ngIf="showVerifyForm" (click)="showVerifyForm= !showVerifyForm" >
             <i class="fa-solid fa-angle-left"></i>
         </div>
-        <h3>Login</h3>
-        <p>Enter your email address to receive an otp to securely access your account and manage your services</p>
-        <div class="login-form">
-            <div class="input-wrapper">
-            <i class="fa-solid fa-envelope"></i>
-            <input type="email" class="form-control inp-field shadow-sm" placeholder="Email">
-            </div>
-            <div class="input-wrapper">
-            <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{ length: 5 }"></ng-otp-input>
-            </div>
-            <button class="login-btn">Submit</button>
+        <div class="form-section" *ngIf="!showVerifyForm">
+            <h3>Login</h3>
+            <p>Enter your email address to receive an otp to securely access your account and manage your services</p>
+            <form *ngIf="loginForm" [formGroup]="loginForm">
+                <div class="login-form">
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" class="form-control inp-field shadow-sm" formControlName="userId"
+                            placeholder="Email">
+                    </div>
+                    <button class="login-btn" (click)="login()">Submit</button>
+                </div>
+            </form>
         </div>
+        <div class="form-section" *ngIf="showVerifyForm">
+            <h3>Verify OTP</h3>
+            <p>Enter the otp sent to ypur email to verify your identity and continue the services</p>
+            <form *ngIf="otpForm" [formGroup]="otpForm">
+                <div class="input-wrapper mt-2">
+                    <ng-otp-input formControlName="otp" [config]="{ length: 4 }"></ng-otp-input>
+                </div>
+                <button class="login-btn" (click)="login()">Continue</button>
+                <button class="resend-btn" (click)="login()">Send again</button>
+            </form>
+        </div>
+
     </div>
 </div>
