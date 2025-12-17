@@ -22,7 +22,7 @@
             <p>Enter the otp sent to ypur email to verify your identity and continue the services</p>
             <form *ngIf="otpForm" [formGroup]="otpForm">
                 <div class="input-wrapper mt-2">
-                    <ng-otp-input formControlName="otp" [config]="{ length: 4 }"></ng-otp-input>
+                    <ng-otp-input formControlName="otp" [config]="{ length: 4, inputClass:'otp-custom', containerClass:'otp-container-custom' }"></ng-otp-input>
                 </div>
                 <button class="login-btn" (click)="login()">Continue</button>
                 <button class="resend-btn" (click)="login()">Send again</button>
