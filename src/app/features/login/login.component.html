@@ -1,31 +1,40 @@
 <div class="container-fluid page-center">
     <div class="login-container">
-        <div class="icon-div shadow-sm" *ngIf="showVerifyForm" (click)="showVerifyForm= !showVerifyForm" >
+        <div class="icon-div shadow-sm" *ngIf="showVerifyForm" (click)="showVerifyForm= !showVerifyForm">
             <i class="fa-solid fa-angle-left"></i>
         </div>
         <div class="form-section" *ngIf="!showVerifyForm">
             <h3>Login</h3>
             <p>Enter your email address to receive an otp to securely access your account and manage your services</p>
-            <form *ngIf="loginForm" [formGroup]="loginForm">
+            <form [formGroup]="loginForm" (ngSubmit)="getOtp()">
                 <div class="login-form">
                     <div class="input-wrapper">
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="email" class="form-control inp-field shadow-sm" formControlName="userId"
+                        <input type="email" class="form-control inp-field shadow-sm" formControlName="emailId"
                             placeholder="Email">
                     </div>
-                    <button class="login-btn" (click)="login()">Submit</button>
+                    <div class="error" *ngIf="submitted && email.invalid">
+                        <small *ngIf="email.errors?.['required']">Email Id is required</small>
+                        <small *ngIf="email.errors?.['email']">Email Id is invalid</small>
+                    </div>
+                    <button type="submit" class="login-btn">Submit</button>
                 </div>
             </form>
         </div>
         <div class="form-section" *ngIf="showVerifyForm">
             <h3>Verify OTP</h3>
             <p>Enter the otp sent to ypur email to verify your identity and continue the services</p>
-            <form *ngIf="otpForm" [formGroup]="otpForm">
+            <form [formGroup]="otpForm" (ngSubmit)="login()">
                 <div class="input-wrapper mt-2">
-                    <ng-otp-input formControlName="otp" [config]="{ length: 4, inputClass:'otp-custom', containerClass:'otp-container-custom' }"></ng-otp-input>
+                    <ng-otp-input formControlName="otp"
+                        [config]="{ length: 4, inputClass:'otp-custom', containerClass:'otp-container-custom' }"></ng-otp-input>
                 </div>
-                <button class="login-btn" (click)="login()">Continue</button>
-                <button class="resend-btn" (click)="login()">Send again</button>
+                <div class="error" *ngIf="otpSubmitted && otp.invalid">
+                    <small *ngIf="otp.errors?.['required']">OTP is required</small>
+                    <small *ngIf="otp.errors?.['pattern']">OTP is invalid</small>
+                </div>
+                <button type="submit" class="login-btn">Continue</button>
+                <button type="button" class="resend-btn" (click)="resendOtp()">Resend OTP</button>
             </form>
         </div>
 

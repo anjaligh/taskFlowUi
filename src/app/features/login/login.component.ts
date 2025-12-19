@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,19 +10,39 @@ export class LoginComponent implements OnInit {
   loginForm !: FormGroup;
   otpForm !: FormGroup
   showVerifyForm = false;
-  constructor(private formBuilder: FormBuilder) { }
+  submitted= false;
+  otpSubmitted = false;
+  constructor(private formBuilder: FormBuilder, private cdr:ChangeDetectorRef) { }
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      userId: ['', Validators.required]
+    this.loginForm = this.formBuilder.nonNullable.group({
+      emailId: ['', [Validators.required, Validators.email]]
     })
-      this.otpForm = this.formBuilder.group({
-        userId: ['', Validators.required],
-        otp: ['', Validators.required]
-      })
+    this.otpForm = this.formBuilder.nonNullable.group({
+      emailId: ['', Validators.required],
+      otp: ['', [Validators.required, Validators.pattern('^[0-9]{4}$')]]
+    })
   }
-  login() {
+  getOtp() {
     console.log(this.loginForm.value);
+    this.submitted = true;
+    if(this.loginForm.invalid){
+      return
+    }
     this.showVerifyForm = true;
+    this.cdr.detectChanges();
+  }
+  
+  get email(){
+    return this.loginForm.controls['emailId']
+  }
+  get otp(){
+    return this.otpForm.controls['otp']
+  }
+  login(){
+    this.otpSubmitted = true;
+  }
+  resendOtp(){
 
   }
+  
 }
