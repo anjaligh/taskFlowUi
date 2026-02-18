@@ -122,3 +122,8 @@
     color: red;
     padding-left: 15px;
 }
+@media (min-width:768px){
+    .login-container {
+        min-height: 400px;
+    }
+}
