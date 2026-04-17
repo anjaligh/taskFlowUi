@@ -133,3 +133,68 @@ export const TICKET_STATUSES: TicketStatus[] = [
   'Waiting',
   'Resolved'
 ];
+export const IT_SUPPORT_WORKFLOW = {
+  id: 'it-support-workflow',
+  name: 'IT Support Ticket Workflow',
+
+  nodes: [
+    {
+      id: 'created',
+      label: 'Ticket Created',
+      type: 'start',
+      position: { x: 50, y: 200 }
+    },
+    {
+      id: 'assigned',
+      label: 'Assigned to Technician',
+      type: 'process',
+      position: { x: 250, y: 200 }
+    },
+    {
+      id: 'in_progress',
+      label: 'In Progress',
+      type: 'process',
+      position: { x: 450, y: 200 }
+    },
+    {
+      id: 'waiting',
+      label: 'Waiting for User',
+      type: 'process',
+      position: { x: 450, y: 350 }
+    },
+    {
+      id: 'resolved',
+      label: 'Resolved',
+      type: 'end',
+      position: { x: 650, y: 200 }
+    }
+  ],
+
+  connections: [
+    {
+      from: 'created',
+      to: 'assigned',
+      label: 'Assign'
+    },
+    {
+      from: 'assigned',
+      to: 'in_progress',
+      label: 'Start Work'
+    },
+    {
+      from: 'in_progress',
+      to: 'waiting',
+      label: 'Need Info'
+    },
+    {
+      from: 'waiting',
+      to: 'in_progress',
+      label: 'User Responded'
+    },
+    {
+      from: 'in_progress',
+      to: 'resolved',
+      label: 'Issue Fixed'
+    }
+  ]
+};

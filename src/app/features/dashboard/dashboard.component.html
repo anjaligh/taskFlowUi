@@ -1,10 +1,19 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <app-charts [chartLabels]="chartLabels" [chartSeries]="chartSeries"></app-charts>
+      <div class="card">
+        <div class="card-body">
+          <app-charts [chartLabels]="chartLabels" [chartSeries]="chartSeries"></app-charts>
+        </div>
+      </div>
     </div>
     <div class="col-md-6">
-      <app-charts [chartLabels]="categoryChartLabels" [chartSeries]="categoryChartSeries"></app-charts>
+      <div class="card">
+        <div class="card-body">
+          <app-charts [chartLabels]="categoryChartLabels" [chartSeries]="categoryChartSeries"></app-charts>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
