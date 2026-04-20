@@ -6,3 +6,7 @@ export interface MenuItem {
     submenuItems?: MenuItem[];
     active: boolean;
 }
+export interface breadcrumbsItem {
+    label: string;
+    url?: string;
+}

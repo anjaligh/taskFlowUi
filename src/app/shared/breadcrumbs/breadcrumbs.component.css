@@ -1,0 +1,22 @@
+
+.breadcrumbs{
+    height: 50px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 35px;
+}
+.breadcrumb-block{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.breadcrumb-item{
+    color: rgb(0,0,0,0.40);
+    text-decoration: none;
+}
+.breadcrumb-item.active{
+    color: rgb(0,0,0);
+}

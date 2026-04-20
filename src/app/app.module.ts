@@ -12,7 +12,7 @@ import { LayoutComponent } from './layout/layout/layout.component';
     AppComponent,
     SidebarComponent,
     HeaderComponent,
-    LayoutComponent
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,

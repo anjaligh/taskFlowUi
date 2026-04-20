@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { ChartsComponent } from 'src/app/shared/charts/charts.component';
+import { BreadcrumbsComponent } from 'src/app/shared/breadcrumbs/breadcrumbs.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ChartsComponent } from 'src/app/shared/charts/charts.component';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    ChartsComponent
+    ChartsComponent,
+    BreadcrumbsComponent
   ]
 })
 export class DashboardModule { }

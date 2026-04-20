@@ -97,5 +97,21 @@ export const MENU_ITEMS = [
         "role": ["admin", "user"],
         "submenuItems": [],
         "active": false
+    },
+        {
+        "title": "App Status",
+        "icon": "fas fa-tools",
+        "link": "/app-status",
+        "role": ["admin"],
+        "submenuItems": [],
+        "active": false
+    },
+        {
+        "title": "Permissions",
+        "icon": "fas fa-tools",
+        "link": "/permissions",
+        "role": ["admin"],
+        "submenuItems": [],
+        "active": false
     }
 ]

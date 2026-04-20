@@ -11,9 +11,13 @@ export class WorkflowComponent {
   constructor(private injector: Injector) { }
   @ViewChild("rete") container!: ElementRef;
   workFlowData!: any[];
+  breadcrumbItems = [
+    { label: 'Dashboard', url: '/dashboard' },
+    { label: 'workflow', url: '/workflow' },
+  ]
   ngAfterViewInit(): void {
     const el = this.container.nativeElement;
-    this.workFlowData= IT_SUPPORT_WORKFLOW.nodes
+    this.workFlowData = IT_SUPPORT_WORKFLOW.nodes
     if (el) {
       createEditor(el, this.injector, this.workFlowData);
     }

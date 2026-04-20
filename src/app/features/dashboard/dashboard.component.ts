@@ -14,8 +14,11 @@ export class DashboardComponent {
   categoryChartSeries: number[] = [];
   categoryChartLabels!: string[]
   chartColors!: string[];
+  breadcrumbItems = [
+    { label: 'Dashboard', url: '' }
+  ]
   ngOnInit() {
-    this.chartColors = ['#AEC7ED','#94E9B8', '#92BFFF', '#6BE6D3', '#B899EB'];
+    this.chartColors = ['#AEC7ED', '#94E9B8', '#92BFFF', '#6BE6D3', '#B899EB'];
     this.chartLabels = TICKET_STATUSES;
     this.chartSeries = TICKET_STATUSES.map(statusItem => {
       return SAMPLE_TICKETS.filter(ticket => ticket.status == statusItem).length
