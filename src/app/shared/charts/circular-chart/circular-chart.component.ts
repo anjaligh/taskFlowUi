@@ -1,25 +1,16 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import {
-  ApexChart,
-  ApexNonAxisChartSeries,
-  ApexAxisChartSeries,
-  ApexResponsive,
-  ChartComponent,
-  NgApexchartsModule,
-} from 'ng-apexcharts';
-import { TicketModel } from 'src/app/core/model/ticket-model';
-import { SAMPLE_TICKETS, TICKET_STATUSES } from 'src/app/data/ticketData';
+import { ApexAxisChartSeries, ApexChart, ApexNonAxisChartSeries, ApexResponsive, ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
 
 @Component({
-  selector: 'app-charts',
-  templateUrl: './charts.component.html',
-  styleUrls: ['./charts.component.css'],
+  selector: 'app-circular-chart',
+  templateUrl: './circular-chart.component.html',
+  styleUrls: ['./circular-chart.component.css'],
   standalone: true,
   imports: [
     NgApexchartsModule
   ],
 })
-export class ChartsComponent {
+export class CircularChartComponent {
   @ViewChild('chart') chart!: ChartComponent;
   public chartOptions!: {
     series: ApexNonAxisChartSeries | ApexAxisChartSeries;
@@ -32,7 +23,6 @@ export class ChartsComponent {
   @Input() chartLabels!: string[];
   @Input() chartColors!: string[];
   @Input() chartType!: any;
-
   constructor() { }
   ngOnInit() {
     this.chartOptions = {

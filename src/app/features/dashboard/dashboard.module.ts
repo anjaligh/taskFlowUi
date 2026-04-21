@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import { ChartsComponent } from 'src/app/shared/charts/charts.component';
 import { HeaderComponent } from 'src/app/core/header/header.component';
 import { SummaryCardComponent } from 'src/app/shared/summary-card/summary-card.component';
+import { CircularChartComponent } from 'src/app/shared/charts/circular-chart/circular-chart.component';
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import { SummaryCardComponent } from 'src/app/shared/summary-card/summary-card.c
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    ChartsComponent,
+    CircularChartComponent,
     HeaderComponent,
     SummaryCardComponent
   ]
