@@ -1,0 +1,14 @@
+<div class="card task-card" [ngClass]="isEven ? 'task-card-light' : 'task-card-dark'" >
+    <div class="card-body task-card-body">
+        <div class="top-block">
+            <span class="title">{{title}}</span>
+            <div class="pill">
+                <i [ngClass]="getTrendIcon(percent)"></i>
+            </div>
+        </div>
+        <div class="bottom-block">
+            <span class="count">{{count}}</span>
+            <span class="percent">{{percent}}</span>
+        </div>
+    </div>
+</div>

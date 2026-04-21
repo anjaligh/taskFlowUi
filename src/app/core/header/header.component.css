@@ -1,0 +1,8 @@
+.header-section{
+    display: flex;
+    align-items: center;
+}
+.notif-btn{
+    border: none;
+    background-color: white;
+}

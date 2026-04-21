@@ -6,7 +6,7 @@ import { WorkflowComponent } from './workflow.component';
 import { CustomNodeComponent } from './custom-node/custom-node.component';
 import { CustomConnectionComponent } from './custom-connection/custom-connection.component';
 import { CustomSocketComponent } from './custom-socket/custom-socket.component';
-import { BreadcrumbsComponent } from "src/app/shared/breadcrumbs/breadcrumbs.component";
+import { HeaderComponent } from 'src/app/core/header/header.component';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { BreadcrumbsComponent } from "src/app/shared/breadcrumbs/breadcrumbs.com
   imports: [
     CommonModule,
     WorkflowRoutingModule,
-    BreadcrumbsComponent
+    HeaderComponent
 ]
 })
 export class WorkflowModule { }

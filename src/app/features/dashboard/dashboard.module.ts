@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { ChartsComponent } from 'src/app/shared/charts/charts.component';
-import { BreadcrumbsComponent } from 'src/app/shared/breadcrumbs/breadcrumbs.component';
+import { HeaderComponent } from 'src/app/core/header/header.component';
+import { SummaryCardComponent } from 'src/app/shared/summary-card/summary-card.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { BreadcrumbsComponent } from 'src/app/shared/breadcrumbs/breadcrumbs.com
     CommonModule,
     DashboardRoutingModule,
     ChartsComponent,
-    BreadcrumbsComponent
+    HeaderComponent,
+    SummaryCardComponent
   ]
 })
 export class DashboardModule { }

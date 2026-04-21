@@ -10,3 +10,8 @@ export interface breadcrumbsItem {
     label: string;
     url?: string;
 }
+export interface SummaryData {
+    title: string;
+    count:string;
+    percent:number;
+}
