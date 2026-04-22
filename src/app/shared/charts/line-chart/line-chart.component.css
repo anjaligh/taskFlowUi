@@ -1,0 +1,11 @@
+.apexcharts-line {
+  stroke-width: 2px !important;
+}
+::ng-deep .apexcharts-menu-icon svg {
+  display: none;
+}
+
+::ng-deep .apexcharts-menu-icon::after {
+  content: '⋮';
+  font-size: 18px;
+}

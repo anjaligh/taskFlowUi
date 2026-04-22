@@ -1,0 +1,23 @@
+.dashboard{
+    background-color: #f5f5f6;
+}
+.tab-section{
+    padding: 10px 15px;
+}
+.line-chart-card{
+    border: 1px solid white;
+    border-radius: 16px;
+    background-color: white;
+    max-height: 320;
+}
+a.tab-title{
+    color: rgb(0,0,0, 0.4);
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+.tab-title.active{
+    color: #AF52DE;
+    font-weight: 600;
+}

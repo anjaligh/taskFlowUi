@@ -1,9 +1,23 @@
-<div class="container-fluid mx-0">
+<div class="container-fluid mx-0 dashboard">
   <app-header [breadcrumbItems]="breadcrumbItems"></app-header>
-  <div class="info-cards-section my-4">
+  <div class="info-cards-section mb-4">
     <div class="row g-1">
       <div class="col-md-3 col-sm-4" *ngFor="let item of summaryCards; let isEven = even; trackBy: trackByTitle">
-        <app-summary-card [title]="item.title" [percent]="item.percent" [isEven]="isEven" [count]="item.count" ></app-summary-card>
+        <app-summary-card [title]="item.title" [percent]="item.percent" [isEven]="isEven"
+          [count]="item.count"></app-summary-card>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-12">
+      <div class="card line-chart-card">
+        <div class="card-body">
+          <div class="tab-section">
+            <a class="tab-title me-4" *ngFor="let tab of tabNames" [ngClass]="{ 'active': selectedTab === tab}"  (click)="selectTab(tab)">{{tab}}</a>
+          </div>
+          <app-line-chart [chartSeries]="lineChartSeries" [chartType]="'line'"
+            [chartXaxis]="tasksTrend.categories"></app-line-chart>
+        </div>
       </div>
     </div>
   </div>
@@ -24,11 +38,6 @@
         </div>
       </div>
 
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <app-line-chart [chartSeries]="tasksTrend.series[0]" [chartType]="'line'" [chartXaxis]="tasksTrend.categories" ></app-line-chart>
     </div>
   </div>
 </div>

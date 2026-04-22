@@ -1,6 +1,7 @@
 .header-section{
     display: flex;
     align-items: center;
+    background-color: #f5f5f6;
 }
 .notif-btn{
     border: none;

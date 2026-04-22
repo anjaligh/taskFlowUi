@@ -200,21 +200,21 @@ export const IT_SUPPORT_WORKFLOW = {
 };
 export const TASKS_TREND = {
   categories: [
-    'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'
   ],
   series: [
     {
-      name: 'Tasks Created',
-      data: [42, 55, 48, 60, 70, 50, 65]
+      name: 'Created',
+      data: [120, 150, 170, 140, 145, 150, 175, 185, 200]
     },
     {
-      name: 'Tasks Completed',
-      data: [30, 45, 40, 52, 60, 48, 58]
+      name: 'Completed',
+      data: [100, 130, 160, 120, 150, 170, 180, 200, 190]
     }
   ]
 };
 export const SUMMARY_DATA = [
-    {
+  {
     title: 'Tasks',
     count: 720,
     percent: '+12.1%'
@@ -234,4 +234,4 @@ export const SUMMARY_DATA = [
     count: 25,
     percent: '+1.2%'
   }
-  ];
+];

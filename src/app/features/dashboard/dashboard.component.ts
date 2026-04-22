@@ -19,6 +19,9 @@ export class DashboardComponent {
   ]
   summaryCards !: any[]
   tasksTrend !: any
+  tabNames = ['Created', 'Completed'];
+  selectedTab = 'Created';
+  lineChartSeries !: { name: string, data: number[] }
   ngOnInit() {
     this.chartColors = ['#AEC7ED', '#94E9B8', '#92BFFF', '#6BE6D3', '#B899EB'];
     this.chartLabels = TICKET_STATUSES;
@@ -31,8 +34,14 @@ export class DashboardComponent {
     })
     this.summaryCards = SUMMARY_DATA;
     this.tasksTrend = TASKS_TREND;
+    this.lineChartSeries = this.tasksTrend.series.find((trend: any) => trend.name === this.selectedTab);
+
   }
-  trackByTitle = (index:number, item:any)=>{
+  trackByTitle = (index: number, item: any) => {
     return item.title
+  }
+  selectTab = (tab: string) => {
+    this.selectedTab = tab;
+    this.lineChartSeries = this.tasksTrend.series.find((trend: any) => trend.name === this.selectedTab);
   }
 }
