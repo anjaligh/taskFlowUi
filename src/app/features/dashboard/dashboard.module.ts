@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import { HeaderComponent } from 'src/app/core/header/header.component';
 import { SummaryCardComponent } from 'src/app/shared/summary-card/summary-card.component';
 import { CircularChartComponent } from 'src/app/shared/charts/circular-chart/circular-chart.component';
+import { LineChartComponent } from 'src/app/shared/charts/line-chart/line-chart.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CircularChartComponent } from 'src/app/shared/charts/circular-chart/cir
     DashboardRoutingModule,
     CircularChartComponent,
     HeaderComponent,
-    SummaryCardComponent
+    SummaryCardComponent,
+    LineChartComponent
   ]
 })
 export class DashboardModule { }
