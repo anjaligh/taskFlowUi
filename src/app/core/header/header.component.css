@@ -1,9 +1,28 @@
 .header-section{
     display: flex;
     align-items: center;
-    background-color: #f5f5f6;
+    justify-content: space-between;
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb;
+    height: 50px;
 }
 .notif-btn{
     border: none;
     background-color: white;
+}
+.right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user-icon{
+    width: 36px;
+    height: 36px;
+    background-color: #1FD286;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-right: 10px;
 }

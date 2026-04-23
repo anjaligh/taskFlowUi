@@ -1,7 +1,7 @@
 .sidebar{
     width: 180px;
     height: 100%;
-    background-color: #f5f5f6;
+    background-color: #1E2753;
     padding: 16px;
 }
 .logo-head{
@@ -10,6 +10,7 @@
     align-items: center;
     font-weight: 600;
     padding: 10px 5px 20px;
+    color: white;
 }
 a.menu-item{
     display: flex;
@@ -18,12 +19,13 @@ a.menu-item{
     padding: 10px 10px;
     font-size: 13px;
     text-decoration: none;
-    color: black;
+    color: white;
     transition: background-color 0.4s ease;
 }
 .menu-item.active{
-    background-color: rgba(63, 81, 181, 0.08);
+    background-color: white;
     border-radius: 16px;
-    transform: translate(2px)
+    transform: translate(2px);
+    color: #5A607F
 }
 
