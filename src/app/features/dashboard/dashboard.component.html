@@ -1,5 +1,4 @@
-<app-header [breadcrumbItems]="breadcrumbItems"></app-header>
-<div class="container-fluid mx-0 g-0 dashboard">
+<div class="container-fluid px-0 dashboard">
   <div class="info-cards-section py-4 px-3">
     <div class="row g-1">
       <div class="col-md-3 col-sm-4" *ngFor="let item of summaryCards; let isEven = even; trackBy: trackByTitle">
@@ -8,44 +7,49 @@
       </div>
     </div>
   </div>
-  <div class="row mb-4 px-3">
-    <div class="col-md-9">
-      <div class="card chart-card">
-        <div class="card-body">
-          <div class="tab-section">
-            <a class="tab-title me-4" *ngFor="let tab of tabNames" [ngClass]="{ 'active': selectedTab === tab}"
-              (click)="selectTab(tab)">{{tab}}</a>
+  <div class="px-3">
+    <div class="row mb-4">
+      <div class="col-md-9">
+        <div class="card chart-card">
+          <div class="card-body">
+            <div class="tab-section">
+              <a class="tab-title me-4" *ngFor="let tab of tabNames" [ngClass]="{ 'active': selectedTab === tab}"
+                (click)="selectTab(tab)">{{tab}}</a>
+            </div>
+            <app-line-chart [chartSeries]="lineChartSeries" [chartXaxis]="tasksTrend.categories"></app-line-chart>
           </div>
-          <app-line-chart [chartSeries]="lineChartSeries" [chartXaxis]="tasksTrend.categories"></app-line-chart>
         </div>
       </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card chart-card">
-        <div class="card-body">
-          <div class="chart-title">Tasks Completed (Last 7 Days)</div>
-          <app-bar-chart [chartSeries]="weeklyTaskCompletion.series" [chartXaxis]="weeklyTaskCompletion.categories"></app-bar-chart>
+      <div class="col-md-3">
+        <div class="card chart-card">
+          <div class="card-body">
+            <div class="chart-title">Tasks Completed (Last 7 Days)</div>
+            <app-bar-chart [chartSeries]="weeklyTaskCompletion.series"
+              [chartXaxis]="weeklyTaskCompletion.categories"></app-bar-chart>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-body">
-          <app-circular-chart [chartLabels]="chartLabels" [chartSeries]="chartSeries" [chartColors]="chartColors"
-            [chartType]="'donut'"></app-circular-chart>
+  <div class="px-3">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <app-circular-chart [chartLabels]="chartLabels" [chartSeries]="chartSeries" [chartColors]="chartColors"
+              [chartType]="'donut'"></app-circular-chart>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-body">
-          <app-circular-chart [chartLabels]="categoryChartLabels" [chartSeries]="categoryChartSeries"
-            [chartColors]="chartColors" [chartType]="'donut'"></app-circular-chart>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <app-circular-chart [chartLabels]="categoryChartLabels" [chartSeries]="categoryChartSeries"
+              [chartColors]="chartColors" [chartType]="'donut'"></app-circular-chart>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
   </div>
 </div>

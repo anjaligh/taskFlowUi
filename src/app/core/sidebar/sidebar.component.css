@@ -1,10 +1,19 @@
-.sidebar{
+.sidebar {
     width: 180px;
     height: 100%;
     background-color: #1E2753;
     padding: 16px;
 }
-.logo-head{
+
+/* @media (max-width:1024px) {
+    .sidebar {
+        position: fixed;
+        left: -180px;
+        transition: left 0.3s ease;
+    }
+} */
+
+.logo-head {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +21,8 @@
     padding: 10px 5px 20px;
     color: white;
 }
-a.menu-item{
+
+a.menu-item {
     display: flex;
     align-items: center;
     justify-content: start;
@@ -22,10 +32,10 @@ a.menu-item{
     color: white;
     transition: background-color 0.4s ease;
 }
-.menu-item.active{
+
+.menu-item.active {
     background-color: white;
     border-radius: 16px;
     transform: translate(2px);
     color: #5A607F
 }
-

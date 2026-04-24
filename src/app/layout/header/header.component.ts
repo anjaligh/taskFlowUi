@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { breadcrumbsItem } from '../model/navigation-model';
+import { breadcrumbsItem } from '../../core/model/navigation-model';
 import { BreadcrumbsComponent } from 'src/app/shared/breadcrumbs/breadcrumbs.component';
 
 @Component({

@@ -9,7 +9,7 @@ import { MENU_ITEMS } from 'src/app/data/menu';
 })
 export class SidebarComponent implements OnInit{
   menuList !: MenuItem[];
-  name='fas fa-tachometer-alt'
+  name='fas fa-tachometer-alt';
   ngOnInit(): void {
     this.menuList = MENU_ITEMS
   }
