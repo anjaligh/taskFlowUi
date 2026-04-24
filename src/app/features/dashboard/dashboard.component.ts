@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { TicketModel } from 'src/app/core/model/ticket-model';
-import { SAMPLE_TICKETS, SUMMARY_DATA, TASKS_TREND, TICKET_CATEGORIES, TICKET_STATUSES } from 'src/app/data/ticketData';
+import { LAST_WEEK_COMPLETION_SUMMARY, SAMPLE_TICKETS, SUMMARY_DATA, TASKS_TREND, TICKET_CATEGORIES, TICKET_STATUSES } from 'src/app/data/ticketData';
 
 
 @Component({
@@ -21,7 +21,8 @@ export class DashboardComponent {
   tasksTrend !: any
   tabNames = ['Created', 'Completed'];
   selectedTab = 'Created';
-  lineChartSeries !: { name: string, data: number[] }
+  lineChartSeries !: { name: string, data: number[] };
+  weeklyTaskCompletion!: any;
   ngOnInit() {
     this.chartColors = ['#AEC7ED', '#94E9B8', '#92BFFF', '#6BE6D3', '#B899EB'];
     this.chartLabels = TICKET_STATUSES;
@@ -35,8 +36,7 @@ export class DashboardComponent {
     this.summaryCards = SUMMARY_DATA;
     this.tasksTrend = TASKS_TREND;
     this.lineChartSeries = this.tasksTrend.series.find((trend: any) => trend.name === this.selectedTab);
-
-  }
+    this.weeklyTaskCompletion = LAST_WEEK_COMPLETION_SUMMARY  }
   trackByTitle = (index: number, item: any) => {
     return item.title
   }

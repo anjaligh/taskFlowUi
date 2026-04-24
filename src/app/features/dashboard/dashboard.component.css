@@ -4,7 +4,7 @@
 .tab-section{
     padding: 10px 15px;
 }
-.line-chart-card{
+.chart-card{
     border: 1px solid white;
     border-radius: 16px;
     background-color: white;
@@ -19,4 +19,9 @@ a.tab-title{
 .tab-title.active{
     color: #AF52DE;
     font-weight: 600;
+}
+.chart-title{
+    font-size: 14px;
+    font-weight: 500;
+    color:#131523
 }

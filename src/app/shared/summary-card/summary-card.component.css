@@ -7,10 +7,12 @@
     padding: 0px 10px;
 }
 .task-card-dark{
-    background: linear-gradient(to bottom, #0f0f0f, #656565);
+    background-color: #D9E4FF;
+    color: #1E5EFF;
 }
 .task-card-light{
-    background: linear-gradient(180deg, #0e81ff, #63aeff);
+    background-color: #C4F8E2;
+    color:#06A561 ;
 }
 .task-card-body{
     display: flex;
@@ -25,7 +27,7 @@
     font-size: 14px;
     font-weight: 400;
 }
-.pill{
+/* .pill{
     border-radius: 6px;
     font-size: 14px;
     width: 40px;
@@ -40,7 +42,7 @@
 }
 .task-card-dark .pill{
     background: linear-gradient(180deg,#4d4d4d, #5a5a5a) 
-}
+} */
 .count{
     font-size: 15px;
     font-weight: 500;

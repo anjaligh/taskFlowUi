@@ -9,7 +9,7 @@ import { LayoutComponent } from './layout/layout/layout.component';
   declarations: [
     AppComponent,
     SidebarComponent,
-    LayoutComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,

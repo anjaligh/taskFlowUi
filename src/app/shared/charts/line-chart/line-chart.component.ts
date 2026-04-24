@@ -2,12 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, ViewChild } from '@angular/core';
 import { ApexAxisChartSeries, ApexChart, ApexGrid, ApexMarkers, ApexStroke, ApexTitleSubtitle, ApexXAxis, ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
 
-// export type ChartOptions = {
-//   series: ApexAxisChartSeries;
-//   chart: ApexChart;
-//   xaxis: ApexXAxis;
-//   title?: ApexTitleSubtitle;
-// };
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
@@ -31,7 +25,6 @@ export class LineChartComponent {
   };
   @Input() chartSeries!: { name: string; data: number[] };
   @Input() chartXaxis!: string[];
-  @Input() chartType!: any;
   constructor() { }
   ngOnChanges() {
     this.chartOptions = {
@@ -44,7 +37,7 @@ export class LineChartComponent {
       ],
       chart: {
         height: 350,
-        type: "line",
+        type: 'line',
         zoom: { enabled: false }
       },
       title: {},

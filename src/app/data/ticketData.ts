@@ -213,6 +213,16 @@ export const TASKS_TREND = {
     }
   ]
 };
+export const LAST_WEEK_COMPLETION_SUMMARY = {
+  categories: [
+    '18', '19', '20', '21', '22', '23', '24'
+  ],
+  series: {
+    name: 'Tasks Completed (Last 7 Days)',
+    data: [20, 24, 29, 28, 25, 30, 28]
+
+  }
+}
 export const SUMMARY_DATA = [
   {
     title: 'Tasks',
