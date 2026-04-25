@@ -1,7 +1,7 @@
 <div class="container-fluid px-0 dashboard">
   <div class="info-cards-section py-4 px-3">
     <div class="row g-1">
-      <div class="col-md-3 col-sm-4" *ngFor="let item of summaryCards; let isEven = even; trackBy: trackByTitle">
+      <div class="col-md-3 col-sm-6" *ngFor="let item of summaryCards; let isEven = even; trackBy: trackByTitle">
         <app-summary-card [title]="item.title" [percent]="item.percent" [isEven]="isEven"
           [count]="item.count"></app-summary-card>
       </div>
@@ -9,7 +9,7 @@
   </div>
   <div class="px-3">
     <div class="row mb-4">
-      <div class="col-md-9">
+      <div class="col-md-9 col-sm-12">
         <div class="card chart-card">
           <div class="card-body">
             <div class="tab-section">
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 col-sm-12">
         <div class="card chart-card">
           <div class="card-body">
             <div class="chart-title">Tasks Completed (Last 7 Days)</div>
@@ -33,7 +33,7 @@
   </div>
   <div class="px-3">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 col-sm-12">
         <div class="card">
           <div class="card-body">
             <app-circular-chart [chartLabels]="chartLabels" [chartSeries]="chartSeries" [chartColors]="chartColors"
@@ -41,7 +41,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 col-sm-12">
         <div class="card">
           <div class="card-body">
             <app-circular-chart [chartLabels]="categoryChartLabels" [chartSeries]="categoryChartSeries"

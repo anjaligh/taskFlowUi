@@ -1,7 +1,7 @@
 <div class="container-fluid p-0 layout">
-    <app-sidebar></app-sidebar>
+    <app-sidebar [isOpen]="isOpen"></app-sidebar>
     <div class="content">
-        <app-header></app-header>
+        <app-header (toggleMenuVisibility)="toggleSidebar($event)"></app-header>
         <router-outlet></router-outlet>
     </div>
 </div>
