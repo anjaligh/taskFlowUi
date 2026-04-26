@@ -9,7 +9,5 @@ export class LayoutComponent {
 isOpen = true;
 toggleSidebar = (value:boolean)=>{
   this.isOpen = value;
-  console.log(`isopen is ${this.isOpen}`);
-  
 }
 }

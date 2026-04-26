@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
     })
   }
   getOtp() {
-    console.log(this.loginForm.value);
     this.submitted = true;
     if (this.loginForm.invalid) {
       return
