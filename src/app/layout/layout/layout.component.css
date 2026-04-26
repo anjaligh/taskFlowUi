@@ -1,9 +1,16 @@
-.layout{
+.layout {
     height: 100vh;
     display: flex;
 }
-.content{
+
+.content {
     flex: 1;
+    margin-left: 180px;
     overflow-y: auto;
     overflow-x: hidden;
+    transition: margin-left 0.3s ease;
+}
+
+.content.expand {
+    margin-left: 0px;
 }

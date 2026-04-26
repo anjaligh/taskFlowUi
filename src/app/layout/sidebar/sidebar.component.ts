@@ -14,9 +14,5 @@ export class SidebarComponent implements OnInit{
   ngOnInit(): void {
     this.menuList = MENU_ITEMS
   }
-  ngOnChanges(changes:SimpleChanges){
-    console.log(changes);
-    
-  }
 
 }
