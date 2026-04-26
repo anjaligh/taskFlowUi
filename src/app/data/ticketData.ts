@@ -198,24 +198,26 @@ export const IT_SUPPORT_WORKFLOW = {
     }
   ]
 };
-export const TASKS_TREND = {
-  categories: [
-    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'
-  ],
+export const BUGS_TREND = {
+  categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
   series: [
     {
-      name: 'Created',
-      data: [120, 150, 170, 140, 145, 150, 175, 185, 200]
+      name: 'Bugs Reported',
+      data: [12, 18, 15, 22, 28, 16, 10,9,15]
     },
     {
-      name: 'Completed',
-      data: [100, 130, 160, 120, 150, 170, 180, 200, 190]
+      name: 'Bugs Resolved',
+      data: [8, 14, 12, 18, 24, 14, 9, 8, 13]
     }
   ]
 };
+export const BUG_PRIORITY = {
+  labels: ['Critical', 'High', 'Medium', 'Low'],
+  series: [10, 25, 40, 25]
+};
 export const LAST_WEEK_COMPLETION_SUMMARY = {
   categories: [
-    '18', '19', '20', '21', '22', '23', '24'
+    '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr'
   ],
   series: {
     name: 'Tasks Completed (Last 7 Days)',
@@ -223,24 +225,33 @@ export const LAST_WEEK_COMPLETION_SUMMARY = {
 
   }
 }
-export const SUMMARY_DATA = [
+export const BUGS_BY_DEVELOPER = {
+  categories: ['Anu', 'Rahul', 'Meera', 'Arjun', 'Neha'],
+  series: [
+    {
+      name: 'Assigned Bugs',
+      data: [18, 25, 20, 15, 22]
+    }
+  ]
+};
+export const SUMMARY_DATA =  [
   {
-    title: 'Tasks',
+    title: 'Total Issues',
     count: 720,
     percent: '+12.1%'
   },
   {
-    title: 'Completed',
+    title: 'Resolved',
     count: 540,
     percent: '+8.4%'
   },
   {
-    title: 'Pending',
+    title: 'Open Issues',
     count: 180,
     percent: '-2.3%'
   },
   {
-    title: 'Overdue',
+    title: 'Critical Bugs',
     count: 25,
     percent: '+1.2%'
   }

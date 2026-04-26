@@ -16,7 +16,7 @@
               <a class="tab-title me-4" *ngFor="let tab of tabNames" [ngClass]="{ 'active': selectedTab === tab}"
                 (click)="selectTab(tab)">{{tab}}</a>
             </div>
-            <app-line-chart [chartSeries]="lineChartSeries" [chartXaxis]="tasksTrend.categories"></app-line-chart>
+            <app-line-chart [chartSeries]="lineChartSeries" [chartXaxis]="bugsTrend.categories"></app-line-chart>
           </div>
         </div>
       </div>

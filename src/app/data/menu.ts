@@ -9,28 +9,6 @@ export const MENU_ITEMS = [
 
     },
     {
-        "title": "Projects",
-        "icon": "fas fa-folder-open",
-        "link": "/projects",
-        "role": ["admin", "user"],
-        "submenuItems": [
-            {
-                "title": "All Projects",
-                "link": "/projects",
-                "icon": "folder",
-                "active": false
-            },
-            {
-                "title": "Create Project",
-                "link": "/projects/create",
-                "role": ["admin"],
-                "icon": "folder",
-                "active": false
-            }
-        ],
-        "active": false
-    },
-    {
         "title": "Tasks",
         "icon": "fas fa-tasks",
         "link": "/tasks",

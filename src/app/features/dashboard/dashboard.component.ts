@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { TicketModel } from 'src/app/core/model/ticket-model';
-import { LAST_WEEK_COMPLETION_SUMMARY, SAMPLE_TICKETS, SUMMARY_DATA, TASKS_TREND, TICKET_CATEGORIES, TICKET_STATUSES } from 'src/app/data/ticketData';
+import { BUGS_TREND, LAST_WEEK_COMPLETION_SUMMARY, SAMPLE_TICKETS, SUMMARY_DATA, TICKET_CATEGORIES, TICKET_STATUSES } from 'src/app/data/ticketData';
 
 
 @Component({
@@ -18,9 +18,9 @@ export class DashboardComponent {
     { label: 'Dashboard', url: '' }
   ]
   summaryCards !: any[]
-  tasksTrend !: any
-  tabNames = ['Created', 'Completed'];
-  selectedTab = 'Created';
+  bugsTrend !: any
+  tabNames = ['Bugs Reported', 'Bugs Resolved'];
+  selectedTab = 'Bugs Reported';
   lineChartSeries !: { name: string, data: number[] };
   weeklyTaskCompletion!: any;
   ngOnInit() {
@@ -34,14 +34,14 @@ export class DashboardComponent {
       return SAMPLE_TICKETS.filter(ticket => ticket.category === categoryItem).length;
     })
     this.summaryCards = SUMMARY_DATA;
-    this.tasksTrend = TASKS_TREND;
-    this.lineChartSeries = this.tasksTrend.series.find((trend: any) => trend.name === this.selectedTab);
+    this.bugsTrend = BUGS_TREND;
+    this.lineChartSeries = this.bugsTrend.series.find((trend: any) => trend.name === this.selectedTab);
     this.weeklyTaskCompletion = LAST_WEEK_COMPLETION_SUMMARY  }
   trackByTitle = (index: number, item: any) => {
     return item.title
   }
   selectTab = (tab: string) => {
     this.selectedTab = tab;
-    this.lineChartSeries = this.tasksTrend.series.find((trend: any) => trend.name === this.selectedTab);
+    this.lineChartSeries = this.bugsTrend.series.find((trend: any) => trend.name === this.selectedTab);
   }
 }
