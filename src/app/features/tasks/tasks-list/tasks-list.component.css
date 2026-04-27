@@ -1,34 +1,67 @@
-table{
+table {
     border-collapse: separate;
     border-spacing: 0;
+    border-radius: 8px;
 }
-.list-table{
+
+.list-table {
     border: 1px solid #E6E9F4;
 }
-.list-table tr:first-child th:first-child{
+
+.list-table tr:first-child th:first-child {
     border-top-left-radius: 8px;
 }
-.table-container{
+.list-table tr:first-child th:last-child{
+    border-top-right-radius: 8px;
+}
+.list-table tr:last-child td:first-child{
+    border-bottom-left-radius: 8px;
+}
+.list-table tr:first-child td:last-child{
+    border-bottom-right-radius: 8px;
+}
+.table-container {
     padding: 10px 24px;
 }
-.head-section{
+.list-table td{
+    font-size: 14px;
+    color: #131523;
+}
+.list-table th{
+    font-size: 14px;
+    color: #5A607F;
+    font-weight: 500;
+}
+.head-section {
     display: flex;
     padding: 20px 24px;
     border: none;
     justify-content: space-between;
     align-items: center;
 }
-.left{
- font-weight: bold;
- font-size: 24px;
+
+.left {
+    font-weight: bold;
+    font-size: 24px;
 }
-.border-btn{
-    border: 1px solid #D7DBEC;
-    height: 40px;
-    background-color: white;
-    color:#1E5EFF;
+
+.btn-common {
     font-size: 13px;
     font-weight: 400;
     border-radius: 8px;
     padding: 5px 15px;
+    height: 40px;
+}
+
+.border-btn {
+    border: 1px solid #D7DBEC;
+    background-color: white;
+    color: #1E5EFF;
+}
+
+.add-btn {
+    background-color: #1E5EFF;
+    border: 1px solid #1E5EFF;
+    height: 40px;
+    color: white;
 }
