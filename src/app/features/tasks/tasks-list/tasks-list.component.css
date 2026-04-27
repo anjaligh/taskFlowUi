@@ -1,0 +1,34 @@
+table{
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.list-table{
+    border: 1px solid #E6E9F4;
+}
+.list-table tr:first-child th:first-child{
+    border-top-left-radius: 8px;
+}
+.table-container{
+    padding: 10px 24px;
+}
+.head-section{
+    display: flex;
+    padding: 20px 24px;
+    border: none;
+    justify-content: space-between;
+    align-items: center;
+}
+.left{
+ font-weight: bold;
+ font-size: 24px;
+}
+.border-btn{
+    border: 1px solid #D7DBEC;
+    height: 40px;
+    background-color: white;
+    color:#1E5EFF;
+    font-size: 13px;
+    font-weight: 400;
+    border-radius: 8px;
+    padding: 5px 15px;
+}

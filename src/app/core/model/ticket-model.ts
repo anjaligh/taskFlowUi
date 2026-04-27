@@ -1,11 +1,11 @@
-export type TicketStatus = 'Open' | 'In Progress' | 'Waiting' | 'Resolved';
+export type TicketStatus = 'Open' | 'In Progress' | 'In Review' | 'Completed';
 export interface TicketModel{
-    id: number,
+    id: string,
     title:string,
-    description: string,
+    type: string,
     status: TicketStatus,
-    priority: 'High' | 'Low' | 'Medium',
-    assignedTo: string,
+    priority: 'High' | 'Low' | 'Medium' | 'Critical',
+    assignee: string,
     createdAt: string,
-    category: 'Hardware' | 'Software' | 'Network' | 'Access';
+    dueDate: string,
 }

@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { TicketModel } from 'src/app/core/model/ticket-model';
-import { BUGS_TREND, LAST_WEEK_COMPLETION_SUMMARY, SAMPLE_TICKETS, SUMMARY_DATA, TICKET_CATEGORIES, TICKET_STATUSES } from 'src/app/data/ticketData';
+import { BUGS_TREND, LAST_WEEK_COMPLETION_SUMMARY, TICKET_LIST, SUMMARY_DATA, TICKET_STATUSES, BUG_PRIORITY } from 'src/app/data/ticketData';
 
 
 @Component({
@@ -27,11 +27,11 @@ export class DashboardComponent {
     this.chartColors = ['#AEC7ED', '#94E9B8', '#92BFFF', '#6BE6D3', '#B899EB'];
     this.chartLabels = TICKET_STATUSES;
     this.chartSeries = TICKET_STATUSES.map(statusItem => {
-      return SAMPLE_TICKETS.filter(ticket => ticket.status == statusItem).length
+      return TICKET_LIST.filter(ticket => ticket.status == statusItem).length
     })
-    this.categoryChartLabels = TICKET_CATEGORIES;
-    this.categoryChartSeries = TICKET_CATEGORIES.map(categoryItem => {
-      return SAMPLE_TICKETS.filter(ticket => ticket.category === categoryItem).length;
+    this.categoryChartLabels = TICKET_STATUSES
+    this.categoryChartSeries =  BUG_PRIORITY.map(categoryItem => {
+      return TICKET_LIST.filter(ticket => ticket.priority === categoryItem).length;
     })
     this.summaryCards = SUMMARY_DATA;
     this.bugsTrend = BUGS_TREND;

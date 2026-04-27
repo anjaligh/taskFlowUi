@@ -31,6 +31,13 @@ const routes: Routes = [
             (m) => m.WorkflowModule,
           ),
       },
+      {
+        path: 'tasks',
+        loadChildren:()=>
+          import('./features/tasks/tasks.module').then(
+            (m)=>m.TasksModule
+          )
+        }
     ]
   }
 ];
