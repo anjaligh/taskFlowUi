@@ -20,16 +20,16 @@
                     </div>
                 </div>
                 <div class="right">
-                    <button type="button" class="btn-common border-btn me-3"><i
+                    <button type="button" class="btn-common border-btn me-2"><i
                             class="fa-regular fa-pen-to-square"></i></button>
-                    <button type="button" class="btn-common border-btn me-3"><i
+                    <button type="button" class="btn-common border-btn me-2"><i
                             class="fa-regular fa-trash-can"></i></button>
                 </div>
             </div>
             <table class="table list-table">
                 <thead>
                     <tr>
-                        <th scope="col">Sl. No</th>
+                        <th scope="col"><input class="form-check-input" type="checkbox" value="" (change)="selectAll()" id="flexCheckDefault"></th>
                         <th scope="col">Ticket ID</th>
                         <th scope="col">Title</th>
                         <th scope="col">Type</th>
@@ -41,8 +41,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let ticket of ticketList; let i=index">
-                        <td scope="col">{{i+1}}</td>
+                    <tr *ngFor="let ticket of ticketList">
+                        <td scope="col"><input class="form-check-input" type="checkbox" value="{{ticket.id}}" [checked]="selectedIds.has(ticket.id)" (change)="selectTicket($event)" id="flexCheckDefault"></td>
                         <td scope="col">{{ticket.id}}</td>
                         <td scope="col">{{ticket.title}}</td>
                         <td scope="col">{{ticket.type}}</td>
@@ -50,7 +50,7 @@
                         <td scope="col">{{ticket.assignee}}</td>
                         <td scope="col">{{ticket.createdAt | date:'dd/mm/yy'}}</td>
                         <td scope="col">{{ticket.dueDate}}</td>
-                        <td scope="col">{{ticket.status}}</td>
+                        <td scope="col"><span class="badge" [ngClass]="{'open':ticket.status==='Open','in-progress':ticket.status==='In Progress','in-review':ticket.status==='In Review','completed':ticket.status==='Completed'}">{{ticket.status}}</span></td>
                     </tr>
                 </tbody>
             </table>

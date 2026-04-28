@@ -11,8 +11,15 @@ import { TICKET_LIST } from 'src/app/data/ticketData';
 export class TasksListComponent {
 ticketList!: TicketModel[]
 ticketFilterOptions!: any[];
+selectedIds = new Set<string>
 ngOnInit(){
   this.ticketList = TICKET_LIST;
   this.ticketFilterOptions = TICKET_FILTER_OPTIONS
+}
+selectAll(){
+  this.ticketList.forEach((ticket:any)=>this.selectedIds.add(ticket.id))
+}
+selectTicket(event:any){
+
 }
 }
