@@ -3,7 +3,9 @@ table {
     border-spacing: 0;
     border-radius: 8px;
 }
-
+.filter-dropdown{
+    width: 200px;
+}
 .list-table {
     border: 1px solid #E6E9F4;
 }
@@ -41,10 +43,13 @@ table {
 }
 
 .left {
+    display: flex;
     font-weight: bold;
     font-size: 24px;
 }
-
+.right{
+    display: flex;
+}
 .btn-common {
     font-size: 13px;
     font-weight: 400;
@@ -64,4 +69,20 @@ table {
     border: 1px solid #1E5EFF;
     height: 40px;
     color: white;
+}
+.list-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+.input-group-text{
+    background-color: white;
+    border-right: none;
+}
+.form-control.search{
+    border-left: none;
+}
+.input-group-text i{
+    color:#979797
 }

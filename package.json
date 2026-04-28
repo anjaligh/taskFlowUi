@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
     "@fortawesome/fontawesome-free": "^7.1.0",
+    "@ng-select/ng-select": "^11.2.0",
     "apexcharts": "^3.54.1",
     "ng-apexcharts": "^1.8.0",
     "ng-otp-input": "^2.0.9",

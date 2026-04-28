@@ -7,6 +7,20 @@
         </div>
     </div>
     <div class="table-container">
+        <div class="list-menu">
+            <div class="left">
+                <ng-select class="form-control filter-dropdown" placeholder="Filter" [items]="ticketFilterOptions"
+                    bindValue="value" bindLabel="label" groupBy="group"></ng-select>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input type="text" class="form-control search" placeholder="Username" aria-label="Username"
+                        aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="right">
+
+            </div>
+        </div>
         <table class="table list-table">
             <thead>
                 <tr>
