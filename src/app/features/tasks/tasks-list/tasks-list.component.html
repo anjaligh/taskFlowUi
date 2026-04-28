@@ -7,48 +7,55 @@
         </div>
     </div>
     <div class="table-container">
-        <div class="list-menu">
-            <div class="left">
-                <ng-select class="form-control filter-dropdown" placeholder="Filter" [items]="ticketFilterOptions"
-                    bindValue="value" bindLabel="label" groupBy="group"></ng-select>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input type="text" class="form-control search" placeholder="Username" aria-label="Username"
-                        aria-describedby="basic-addon1">
+        <div class="table-wrapper">
+            <div class="table-actions">
+                <div class="left">
+                    <ng-select class="form-control filter-dropdown me-3" placeholder="Filter"
+                        [items]="ticketFilterOptions" bindValue="value" bindLabel="label" groupBy="group"></ng-select>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1"><i
+                                class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" class="form-control search" placeholder="Search" aria-label="search"
+                            aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="right">
+                    <button type="button" class="btn-common border-btn me-3"><i
+                            class="fa-regular fa-pen-to-square"></i></button>
+                    <button type="button" class="btn-common border-btn me-3"><i
+                            class="fa-regular fa-trash-can"></i></button>
                 </div>
             </div>
-            <div class="right">
-
-            </div>
+            <table class="table list-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Sl. No</th>
+                        <th scope="col">Ticket ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Priority</th>
+                        <th scope="col">Assignee</th>
+                        <th scope="col">Created On</th>
+                        <th scope="col">Due Date</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ticket of ticketList; let i=index">
+                        <td scope="col">{{i+1}}</td>
+                        <td scope="col">{{ticket.id}}</td>
+                        <td scope="col">{{ticket.title}}</td>
+                        <td scope="col">{{ticket.type}}</td>
+                        <td scope="col"><span class="badge" [ngClass]="{'medium':ticket.priority=='Medium','low':ticket.priority=='Low','critical':ticket.priority=='Critical','high':ticket.priority=='High'}">{{ticket.priority}}</span></td>
+                        <td scope="col">{{ticket.assignee}}</td>
+                        <td scope="col">{{ticket.createdAt | date:'dd/mm/yy'}}</td>
+                        <td scope="col">{{ticket.dueDate}}</td>
+                        <td scope="col">{{ticket.status}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <table class="table list-table">
-            <thead>
-                <tr>
-                    <th scope="col">Sl. No</th>
-                    <th scope="col">Ticket ID</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Priority</th>
-                    <th scope="col">Assignee</th>
-                    <th scope="col">Created On</th>
-                    <th scope="col">Due Date</th>
-                    <th scope="col">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let ticket of ticketList; let i=index">
-                    <td scope="col">{{i+1}}</td>
-                    <td scope="col">{{ticket.id}}</td>
-                    <td scope="col">{{ticket.title}}</td>
-                    <td scope="col">{{ticket.type}}</td>
-                    <td scope="col">{{ticket.priority}}</td>
-                    <td scope="col">{{ticket.assignee}}</td>
-                    <td scope="col">{{ticket.createdAt | date:'dd/mm/yy'}}</td>
-                    <td scope="col">{{ticket.dueDate}}</td>
-                    <td scope="col">{{ticket.status}}</td>
-                </tr>
-            </tbody>
-        </table>
+
     </div>
 
 </div>

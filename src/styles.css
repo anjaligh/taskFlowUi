@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@ng-select/ng-select/themes/default.theme.css";
 body {
-    font-family: "Montserrat";
+    font-family: 'Inter';
 }
 
 ng-otp-input .otp-input.otp-custom {
@@ -26,4 +26,9 @@ ng-otp-input .otp-input.otp-custom:focus {
 }
 .page{
     background-color: #f5f5f6;
+}
+.form-control{
+    height: 40px;
+    display: flex;
+    align-items: center;
 }

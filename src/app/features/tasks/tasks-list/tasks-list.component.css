@@ -1,39 +1,54 @@
-table {
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 8px;
-}
-.filter-dropdown{
+.filter-dropdown {
     width: 200px;
-}
-.list-table {
-    border: 1px solid #E6E9F4;
+    display: flex;
+    align-items: center;
 }
 
-.list-table tr:first-child th:first-child {
-    border-top-left-radius: 8px;
+::ng-deep .filter-dropdown .ng-select-container {
+    border: none;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 400
 }
-.list-table tr:first-child th:last-child{
-    border-top-right-radius: 8px;
+
+::ng-deep .filter-dropdown.ng-select-focused .ng-select-container {
+    border: none;
+    box-shadow: none;
 }
-.list-table tr:last-child td:first-child{
-    border-bottom-left-radius: 8px;
+
+.list-table {
+    border: none;
 }
-.list-table tr:first-child td:last-child{
-    border-bottom-right-radius: 8px;
+
+.table-wrapper {
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
 }
+
+thead {
+    border-bottom: 2px solid #E6E9F4;
+}
+
+tr {
+    border-bottom: 1px solid #E6E9F4;
+}
+
 .table-container {
-    padding: 10px 24px;
+    padding: 10px 30px;
 }
-.list-table td{
+
+.list-table td {
     font-size: 14px;
     color: #131523;
 }
-.list-table th{
+
+.list-table th {
     font-size: 14px;
     color: #5A607F;
     font-weight: 500;
 }
+
 .head-section {
     display: flex;
     padding: 20px 24px;
@@ -47,9 +62,11 @@ table {
     font-weight: bold;
     font-size: 24px;
 }
-.right{
+
+.right {
     display: flex;
 }
+
 .btn-common {
     font-size: 13px;
     font-weight: 400;
@@ -70,19 +87,54 @@ table {
     height: 40px;
     color: white;
 }
-.list-menu{
+
+.table-actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: white;
+    padding-bottom: 20px;
 }
-.input-group-text{
+
+.input-group-text {
     background-color: white;
     border-right: none;
 }
-.form-control.search{
+
+.form-control.search {
     border-left: none;
 }
-.input-group-text i{
-    color:#979797
+
+.input-group-text i {
+    color: #979797
+}
+
+.search::placeholder {
+    color: #A1A7C4;
+}
+
+.badge {
+    padding: 5px;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.critical {
+    background-color: #FDECEC;
+    color: #B91C1C;
+}
+
+.medium {
+    background-color: #FEF9C3;
+    color: #A16207;
+}
+
+.high {
+    background-color: #FFF4E5;
+    color: #C2410C;
+}
+
+.low {
+    background-color: #ECFDF5;
+    color: #047857;
 }
