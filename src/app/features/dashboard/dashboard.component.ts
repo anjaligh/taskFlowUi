@@ -1,5 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-import { TicketModel } from 'src/app/core/model/ticket-model';
+import { Component } from '@angular/core';
 import { BUGS_TREND, LAST_WEEK_COMPLETION_SUMMARY, TICKET_LIST, SUMMARY_DATA, TICKET_STATUSES, BUG_PRIORITY } from 'src/app/data/ticketData';
 
 

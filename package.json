@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^16.2.0",
+    "@angular/animations": "^16.2.12",
     "@angular/common": "^16.2.0",
     "@angular/compiler": "^16.2.0",
     "@angular/core": "^16.2.0",
@@ -24,6 +24,7 @@
     "apexcharts": "^3.54.1",
     "ng-apexcharts": "^1.8.0",
     "ng-otp-input": "^2.0.9",
+    "primeng": "^16.9.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "rete": "^2.0.6",

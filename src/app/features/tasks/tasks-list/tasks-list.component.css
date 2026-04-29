@@ -158,12 +158,18 @@ tr {
     background-color: #10B981;
     color: #ffffff;
 }
-.action i{
-    color:#131523;
+
+.action i {
+    color: #131523;
     font-weight: 300;
 }
-.action-btn{
+
+.action-btn {
     border: none;
     background-color: white;
-    
+
+}
+
+.border-none {
+    border: none;
 }

@@ -5,6 +5,7 @@ import { TasksRoutingModule } from './tasks-routing.module';
 import { TasksListComponent } from './tasks-list/tasks-list.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
+import { PaginationComponent } from 'src/app/shared/pagination/pagination.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     TasksRoutingModule,
     NgSelectModule,
-    FormsModule
+    FormsModule,
+    PaginationComponent
   ]
 })
 export class TasksModule { }
