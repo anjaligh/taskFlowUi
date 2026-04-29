@@ -11,15 +11,26 @@ import { TICKET_LIST } from 'src/app/data/ticketData';
 export class TasksListComponent {
 ticketList!: TicketModel[]
 ticketFilterOptions!: any[];
-selectedIds = new Set<string>
+selectedIds = new Set<string>;
 ngOnInit(){
   this.ticketList = TICKET_LIST;
   this.ticketFilterOptions = TICKET_FILTER_OPTIONS
 }
-selectAll(){
-  this.ticketList.forEach((ticket:any)=>this.selectedIds.add(ticket.id))
+selectAll(event:any){
+  const checked = event.target.checked;
+  if(checked){
+this.ticketList.forEach((ticket:any)=>this.selectedIds.add(ticket.id))
+  } else{
+    this.ticketList.forEach((ticket:any)=>this.selectedIds.clear())
+  }
 }
-selectTicket(event:any){
-
+selectTicket(event:any,value:string){
+ const checked = event.target.checked;
+ if(checked){
+  this.selectedIds.add(value);
+ } else{
+  this.selectedIds.delete(value)
+ }
+ 
 }
 }
