@@ -14,14 +14,14 @@ ticketFilterOptions!: any[];
 selectedIds = new Set<string>;
 ngOnInit(){
   this.ticketList = TICKET_LIST;
-  this.ticketFilterOptions = TICKET_FILTER_OPTIONS
+  this.ticketFilterOptions = TICKET_FILTER_OPTIONS;
 }
 selectAll(event:any){
   const checked = event.target.checked;
   if(checked){
 this.ticketList.forEach((ticket:any)=>this.selectedIds.add(ticket.id))
   } else{
-    this.ticketList.forEach((ticket:any)=>this.selectedIds.clear())
+    this.selectedIds.clear()
   }
 }
 selectTicket(event:any,value:string){
