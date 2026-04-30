@@ -14,14 +14,14 @@ export class TasksListComponent {
   ticketFilterOptions!: any[];
   selectedIds = new Set<string>;
   first = 0;
-  page=1;
+  page = 1;
   rows = 5;
   rowsPerPage = [5, 10, 15];
   totalRecords = 0;
   ngOnInit() {
     this.ticketList = TICKET_LIST;
     this.totalRecords = this.ticketList.length;
-    this.ticketListCurrent = this.ticketList.slice(0, this.rows-1)
+    this.ticketListCurrent = this.ticketList.slice(0, this.rows - 1)
     this.ticketFilterOptions = TICKET_FILTER_OPTIONS;
   }
   selectAll(event: any) {
@@ -42,13 +42,15 @@ export class TasksListComponent {
 
   }
   pageChange(event: any) {
-    this.first = event.first
-    console.log(this.first);
     if (this.rows !== event.rows) {
       this.first = 0
       this.rows = event.rows;
       this.ticketListCurrent = this.ticketList.slice(0, this.rows - 1)
     }
-    this.ticketListCurrent = this.ticketList.slice(event.first, this.rows + event.first)
+    else {
+      this.first = event.first
+      this.ticketListCurrent = this.ticketList.slice(event.first, this.rows + event.first)
+    }
+
   }
 }
