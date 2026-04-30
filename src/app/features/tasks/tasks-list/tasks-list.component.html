@@ -43,7 +43,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let ticket of ticketList">
+                    <tr *ngFor="let ticket of ticketListCurrent">
                         <td><input class="form-check-input" type="checkbox" [checked]="selectedIds.has(ticket.id)"
                                 (change)="selectTicket($event, ticket.id)" id="checkbox-{{ticket.id}}"></td>
                         <td>{{ticket.id}}</td>
@@ -65,7 +65,7 @@
                 </tbody>
             </table>
             <div class="card flex justify-center border-none">
-                <app-pagination></app-pagination>
+                <app-pagination [first]="first" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="rowsPerPage" (pageChange)="pageChange($event)"></app-pagination>
             </div>
         </div>
 
