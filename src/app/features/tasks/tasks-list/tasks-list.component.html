@@ -15,7 +15,7 @@
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1"><i
                                 class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" class="form-control search" placeholder="Search" aria-label="search"
+                        <input type="text" class="form-control search" [(ngModel)]="searchText" placeholder="Search" aria-label="search"
                             aria-describedby="basic-addon1">
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let ticket of ticketListCurrent">
+                    <tr *ngFor="let ticket of ticketListCurrent$ | async">
                         <td><input class="form-check-input" type="checkbox" [checked]="selectedIds.has(ticket.id)"
                                 (change)="selectTicket($event, ticket.id)" id="checkbox-{{ticket.id}}"></td>
                         <td>{{ticket.id}}</td>
