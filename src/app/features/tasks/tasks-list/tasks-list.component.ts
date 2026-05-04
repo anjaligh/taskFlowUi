@@ -21,7 +21,7 @@ export class TasksListComponent {
   rowsPerPage = [5, 10, 15];
   totalRecords = 0;
   searchText!: string;
-  constructor(private tasksService: TasksListService) {
+  constructor(public tasksService: TasksListService) {
     this.ticketListCurrent$ = this.tasksService.filteredArray$
   }
   ngOnInit() {
