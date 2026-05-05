@@ -15,7 +15,7 @@ function matches(obj: any, term: string): boolean {
 })
 
 export class TasksListService {
-
+  private _data: TicketModel[] = [];
   filteredArray$ = new BehaviorSubject<TicketModel[]>([]);
   search$ = new Subject<void>();
 
@@ -30,21 +30,18 @@ export class TasksListService {
     ).subscribe(result => {
       this.filteredArray$.next(result);
     });
-
     this.fetchData();
   }
 
   private _search(): Observable<TicketModel[]> {
     const { searchTerm } = this._state;
-
-    let data = this.filteredArray$.value;
-
-    const filtered = data.filter(item => matches(item, searchTerm));
+    const filtered = this._data.filter(item => matches(item, searchTerm));
     return of(filtered);
   }
 
   fetchData() {
-    this.setData(TICKET_LIST);
+    this._data = TICKET_LIST;
+    this.search$.next(); 
   }
 
   set searchTerm(searchTerm: string) {
