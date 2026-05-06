@@ -4,6 +4,11 @@ import { TicketModel } from 'src/app/core/model/ticket-model';
 import { TICKET_LIST } from 'src/app/data/ticketData';
 interface State {
   searchTerm: string;
+  first: number;
+  page: number;
+  rows: number;
+  rowsPerPage: number[];
+  totalRecords: number;
 }
 function matches(obj: any, term: string): boolean {
   return Object.values(obj).some(value =>
@@ -20,7 +25,12 @@ export class TasksListService {
   search$ = new Subject<void>();
 
   private _state: State = {
-    searchTerm: ''
+    searchTerm: '',
+    first: 0,
+    page: 1,
+    rows: 5,
+    rowsPerPage: [5, 10, 15],
+    totalRecords: 0
   };
 
   constructor() {
@@ -36,18 +46,40 @@ export class TasksListService {
   private _search(): Observable<TicketModel[]> {
     const { searchTerm } = this._state;
     const filtered = this._data.filter(item => matches(item, searchTerm));
-    return of(filtered);
+    this._state.totalRecords = filtered.length;
+    const paginatedData = filtered.slice(this._state.first, this._state.first + this._state.rows)
+    return of(paginatedData);
   }
 
   fetchData() {
     this._data = TICKET_LIST;
-    this.search$.next(); 
+    this.search$.next();
   }
 
-  set searchTerm(searchTerm: string) {
+  set searchText(searchTerm: string) {
     this._set({ searchTerm });
   }
+  set totalRecords(totalRecords: number) {
+    this._set({ totalRecords });
+  }
+  set rows(rows: number) {
+    this._set({ rows });
+  }
+  set first(first: number) {
+    this._set({ first });
+  }
+  set rowsPerPage(rowsPerPage: number[]) {
+    this._set({ rowsPerPage });
+  }
+  setPage(first: number, rows: number) {
+    const newFirstVal = this._state.rows !== rows ? 0 : first
+    this._set({ first: newFirstVal, rows });
+  }
 
+  get first() { return this._state.first; }
+  get rows() { return this._state.rows; }
+  get rowsPerPage() { return this._state.rowsPerPage; }
+  get totalRecords() { return this._state.totalRecords; }
   setData(data: TicketModel[]) {
     this.filteredArray$.next(data);
   }
