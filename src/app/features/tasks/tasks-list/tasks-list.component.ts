@@ -11,11 +11,9 @@ import { TasksListService } from './tasks-list.service';
   styleUrls: ['./tasks-list.component.css']
 })
 export class TasksListComponent {
-  ticketList!: TicketModel[];
   ticketListCurrent$!: Observable<TicketModel[]>;
   ticketFilterOptions!: any[];
   selectedIds = new Set<string>;
-  searchText!: string;
   constructor(public tasksService: TasksListService) {
     this.ticketListCurrent$ = this.tasksService.filteredArray$
   }
@@ -25,10 +23,14 @@ export class TasksListComponent {
   selectAll(event: any) {
     const checked = event.target.checked;
     if (checked) {
-      this.ticketList.forEach((ticket: any) => this.selectedIds.add(ticket.id))
+      this.tasksService.allData.forEach((ticket: any) => this.selectedIds.add(ticket.id))
     } else {
       this.selectedIds.clear()
     }
+    
+  }
+  isAllSelected(){
+    return this.tasksService.allData.every(item=>this.selectedIds.has(item.id))
   }
   selectTicket(event: any, value: string) {
     const checked = event.target.checked;
@@ -37,11 +39,12 @@ export class TasksListComponent {
     } else {
       this.selectedIds.delete(value)
     }
-
+    console.log((this.selectedIds));
+    
   }
   pageChange(event: any) {
     console.log((event));
-    
+
     this.tasksService.setPage(event.first, event.rows);
   }
 }

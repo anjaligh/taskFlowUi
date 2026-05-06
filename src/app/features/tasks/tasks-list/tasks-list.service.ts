@@ -65,6 +65,9 @@ export class TasksListService {
   get rows() { return this._state.rows; }
   get rowsPerPage() { return this._state.rowsPerPage; }
   get totalRecords() { return this._state.totalRecords; }
+  get allData():TicketModel[]{
+    return this._data
+  }
   setData(data: TicketModel[]) {
     this.filteredArray$.next(data);
   }
