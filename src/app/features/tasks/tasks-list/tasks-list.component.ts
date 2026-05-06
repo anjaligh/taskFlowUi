@@ -20,9 +20,6 @@ export class TasksListComponent {
     this.ticketListCurrent$ = this.tasksService.filteredArray$
   }
   ngOnInit() {
-    this.ticketList = TICKET_LIST;
-    this.tasksService.totalRecords = this.ticketList.length;
-    // this.ticketListCurrent = this.ticketList.slice(0, this.rows - 1)
     this.ticketFilterOptions = TICKET_FILTER_OPTIONS;
   }
   selectAll(event: any) {

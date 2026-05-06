@@ -59,22 +59,7 @@ export class TasksListService {
   set searchText(searchTerm: string) {
     this._set({ searchTerm });
   }
-  set totalRecords(totalRecords: number) {
-    this._set({ totalRecords });
-  }
-  set rows(rows: number) {
-    this._set({ rows });
-  }
-  set first(first: number) {
-    this._set({ first });
-  }
-  set rowsPerPage(rowsPerPage: number[]) {
-    this._set({ rowsPerPage });
-  }
-  setPage(first: number, rows: number) {
-    const newFirstVal = this._state.rows !== rows ? 0 : first
-    this._set({ first: newFirstVal, rows });
-  }
+
 
   get first() { return this._state.first; }
   get rows() { return this._state.rows; }
@@ -87,5 +72,10 @@ export class TasksListService {
   private _set(patch: Partial<State>) {
     Object.assign(this._state, patch);
     this.search$.next();
+  }
+  
+  setPage(first: number, rows: number) {
+    const newFirstVal = this._state.rows !== rows ? 0 : first
+    this._set({ first: newFirstVal, rows });
   }
 }
