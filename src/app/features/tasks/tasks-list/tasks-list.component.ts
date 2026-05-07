@@ -39,12 +39,13 @@ export class TasksListComponent {
     } else {
       this.selectedIds.delete(value)
     }
-    console.log((this.selectedIds));
     
   }
+  onSearch(event:any){
+    this.selectedIds.clear();
+    this.tasksService.searchText=event
+  }
   pageChange(event: any) {
-    console.log((event));
-
     this.tasksService.setPage(event.first, event.rows);
   }
 }
