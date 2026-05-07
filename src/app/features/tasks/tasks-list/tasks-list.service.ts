@@ -4,6 +4,8 @@ import { TicketModel } from 'src/app/core/model/ticket-model';
 import { TICKET_LIST } from 'src/app/data/ticketData';
 interface State {
   searchTerm: string;
+  activeFIlterGroup: string;
+  activeFIlterValue: string;
   first: number;
   page: number;
   rows: number;
@@ -26,6 +28,8 @@ export class TasksListService {
 
   private _state: State = {
     searchTerm: '',
+    activeFIlterGroup: '',
+    activeFIlterValue: '',
     first: 0,
     page: 1,
     rows: 5,
@@ -45,7 +49,10 @@ export class TasksListService {
 
   private _search(): Observable<TicketModel[]> {
     const { searchTerm } = this._state;
-    const filtered = this._data.filter(item => matches(item, searchTerm));
+    let filtered = this._data.filter(item => matches(item, searchTerm));
+    if(this._state.activeFIlterGroup && this._state.activeFIlterValue){
+      filtered = filtered.filter((item:any)=>item[this._state.activeFIlterGroup.toLowerCase()]===this._state.activeFIlterValue)
+    }
     this._state.totalRecords = filtered.length;
     const paginatedData = filtered.slice(this._state.first, this._state.first + this._state.rows)
     return of(paginatedData);
@@ -59,13 +66,18 @@ export class TasksListService {
   set searchText(searchTerm: string) {
     this._set({ searchTerm });
   }
-
+  set activeFIlterGroup(activeFIlterGroup: string) {
+    this._set({ activeFIlterGroup });
+  }
+  set activeFIlterValue(activeFIlterValue: string) {
+    this._set({ activeFIlterValue });
+  }
 
   get first() { return this._state.first; }
   get rows() { return this._state.rows; }
   get rowsPerPage() { return this._state.rowsPerPage; }
   get totalRecords() { return this._state.totalRecords; }
-  get allData():TicketModel[]{
+  get allData(): TicketModel[] {
     return this._data
   }
   setData(data: TicketModel[]) {
@@ -76,9 +88,12 @@ export class TasksListService {
     Object.assign(this._state, patch);
     this.search$.next();
   }
-  
+
   setPage(first: number, rows: number) {
     const newFirstVal = this._state.rows !== rows ? 0 : first
     this._set({ first: newFirstVal, rows });
+  }
+    setFilter(activeFIlterGroup: string, activeFIlterValue: string) {
+    this._set({activeFIlterGroup, activeFIlterValue });
   }
 }

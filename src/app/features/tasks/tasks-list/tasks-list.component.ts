@@ -41,6 +41,14 @@ export class TasksListComponent {
     }
     
   }
+  filterData(event:any){
+    if(event=== 'clear'){
+      this.tasksService.setFilter('','')
+    }else{
+    this.tasksService.setFilter(event.group,event.value)
+    }
+    
+  }
   onSearch(event:any){
     this.selectedIds.clear();
     this.tasksService.searchText=event
