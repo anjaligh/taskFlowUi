@@ -1,5 +1,5 @@
 .filter-dropdown {
-    width: 200px;
+    width: 250px;
     display: flex;
     align-items: center;
 }
@@ -11,7 +11,7 @@
     font-weight: 400
 }
 
-::ng-deep .filter-dropdown.ng-select-focused .ng-select-container {
+::ng-deep .ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container {
     border: none;
     box-shadow: none;
 }
@@ -104,7 +104,11 @@ tr {
 .form-control.search {
     border-left: none;
 }
-
+.form-control:focus {
+    border: 1px solid #E6E9F4;;
+    box-shadow: none;
+    border-left: none;
+}
 .input-group-text i {
     color: #979797
 }
