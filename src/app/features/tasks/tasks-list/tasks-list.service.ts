@@ -50,8 +50,8 @@ export class TasksListService {
   private _search(): Observable<TicketModel[]> {
     const { searchTerm } = this._state;
     let filtered = this._data.filter(item => matches(item, searchTerm));
-    if(this._state.activeFIlterGroup && this._state.activeFIlterValue){
-      filtered = filtered.filter((item:any)=>item[this._state.activeFIlterGroup.toLowerCase()]===this._state.activeFIlterValue)
+    if (this._state.activeFIlterGroup && this._state.activeFIlterValue) {
+      filtered = filtered.filter((item: any) => item[this._state.activeFIlterGroup.toLowerCase()] === this._state.activeFIlterValue)
     }
     this._state.totalRecords = filtered.length;
     const paginatedData = filtered.slice(this._state.first, this._state.first + this._state.rows)
@@ -89,11 +89,16 @@ export class TasksListService {
     this.search$.next();
   }
 
-  setPage(first: number, rows: number) {
+  setPage(first: number, rows: number = this._state.rows) {
     const newFirstVal = this._state.rows !== rows ? 0 : first
     this._set({ first: newFirstVal, rows });
   }
-    setFilter(activeFIlterGroup: string, activeFIlterValue: string) {
-    this._set({activeFIlterGroup, activeFIlterValue });
+  setFilter(activeFIlterGroup: string, activeFIlterValue: string) {
+    this._set({ activeFIlterGroup, activeFIlterValue });
+  }
+  deleteData(id: string) {
+    const index = this._data.findIndex((item: any) => item.id === id);
+    this._data.splice(index,1)
+    this.search$.next();
   }
 }

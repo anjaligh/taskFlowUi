@@ -11,7 +11,7 @@
             <div class="table-actions">
                 <div class="left">
                     <ng-select class="form-control filter-dropdown me-3" placeholder="Filter"
-                        [items]="ticketFilterOptions" bindValue="value" bindLabel="label" groupBy="group" (clear)="filterData('clear')" (change)="filterData($event)"></ng-select>
+                        [items]="ticketFilterOptions" bindValue="value" bindLabel="label" groupBy="group" [clearable]="true" (clear)="filterData('clear')" (change)="filterData($event)"></ng-select>
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1"><i
                                 class="fa-solid fa-magnifying-glass"></i></span>
@@ -60,7 +60,7 @@
                         </td>
                         <td><span class="action"><button type="button" class="action-btn"><i
                                         class="fa-regular fa-pen-to-square me-1"></i></button><button type="button"
-                                    class="action-btn"><i class="fa-regular fa-trash-can"></i></button></span></td>
+                                    class="action-btn" (click)="deleteItemConfirm(ticket.id)"><i class="fa-regular fa-trash-can"></i></button></span></td>
                     </tr>
                 </tbody>
             </table>

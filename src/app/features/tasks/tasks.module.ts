@@ -7,7 +7,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from 'src/app/shared/pagination/pagination.component';
 
-
 @NgModule({
   declarations: [
     TasksListComponent
