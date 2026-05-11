@@ -1,0 +1,19 @@
+<p-dialog header="Add Task" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+    <form>
+        <div class="mb-3">
+            <label for="title" class="form-label">title</label>
+            <input type="text" class="form-control" id="title">
+        </div>
+        <div class="mb-3">
+            <label for="assignee" class="form-label">Assignee</label>
+            <input type="text" class="form-control" id="assignee">
+        </div>
+        <div class="mb-3">
+            <label for="type" class="form-label">Type</label>
+            <select class="form-control">
+                <option *ngFor="let type of types" value="type.value">{{type.label}}</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</p-dialog>

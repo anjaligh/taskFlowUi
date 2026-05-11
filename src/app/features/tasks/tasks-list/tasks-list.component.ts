@@ -13,12 +13,20 @@ import Swal from 'sweetalert2';
 export class TasksListComponent {
   ticketListCurrent$!: Observable<TicketModel[]>;
   ticketFilterOptions!: any[];
+  ticketType!: any[];
+  ticketPriority!: any[];
+  ticketAssignee!: any[];
+  ticketStatus!: any[];
   selectedIds = new Set<string>;
+  visible= false;
   constructor(public tasksService: TasksListService) {
     this.ticketListCurrent$ = this.tasksService.filteredArray$
   }
   ngOnInit() {
     this.ticketFilterOptions = TICKET_FILTER_OPTIONS;
+    this.ticketType = this.ticketFilterOptions.filter(item=>item.group === 'Type');
+    this.ticketPriority = this.ticketFilterOptions.filter(item=>item.group === 'Priority');
+    this.ticketStatus = this.ticketFilterOptions.filter(item=>item.group === 'Status');
   }
   selectAll(event: any) {
     const checked = event.target.checked;
@@ -76,5 +84,8 @@ export class TasksListComponent {
       }
       
     })
+  }
+  openModal(){
+    this.visible =true;
   }
 }

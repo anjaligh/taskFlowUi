@@ -1,13 +1,16 @@
+<div class="card flex justify-center" *ngIf="visible">
+<app-common-modal [visible]="visible" [types]="ticketType"></app-common-modal>>
+</div>
 <div class="container-fluid px-0 page">
     <div class="head-section">
         <div class="left">Tasks</div>
         <div class="right">
             <button type="button" class="btn-common border-btn me-3">Export</button>
-            <button type="button" class="btn-common add-btn"><i class="fas fa-plus"></i> Add Task</button>
+            <button type="button" class="btn-common add-btn"(click)="openModal()"><i class="fas fa-plus"></i> Add Task</button>
         </div>
     </div>
     <div class="table-container">
-        <div class="table-wrapper">
+        <div class="table-wrapper"> 
             <div class="table-actions">
                 <div class="left">
                     <ng-select class="form-control filter-dropdown me-3" placeholder="Filter"
