@@ -6,6 +6,8 @@ import { TasksListComponent } from './tasks-list/tasks-list.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from 'src/app/shared/pagination/pagination.component';
+import { CommonModalComponent } from 'src/app/shared/common-modal/common-modal.component';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { PaginationComponent } from 'src/app/shared/pagination/pagination.compon
     TasksRoutingModule,
     NgSelectModule,
     FormsModule,
-    PaginationComponent
+    PaginationComponent,
+    CommonModalComponent,
+    DialogModule
   ]
 })
 export class TasksModule { }

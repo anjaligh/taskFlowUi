@@ -1,17 +1,19 @@
+<!-- <div class="card flex justify-center" *ngIf="visible"> -->
+<app-common-modal [(visible)]="visible" [formFields]="taskFormFields" [formGroup]="taskFormGroup" (submitEvent)="submitForm($event)"></app-common-modal>
 <div class="container-fluid px-0 page">
     <div class="head-section">
         <div class="left">Tasks</div>
         <div class="right">
             <button type="button" class="btn-common border-btn me-3">Export</button>
-            <button type="button" class="btn-common add-btn"><i class="fas fa-plus"></i> Add Task</button>
+            <button type="button" class="btn-common add-btn"(click)="openModal()"><i class="fas fa-plus"></i> Add Task</button>
         </div>
     </div>
     <div class="table-container">
-        <div class="table-wrapper">
+        <div class="table-wrapper"> 
             <div class="table-actions">
                 <div class="left">
                     <ng-select class="form-control filter-dropdown me-3" placeholder="Filter"
-                        [items]="ticketFilterOptions" bindValue="value" bindLabel="label" groupBy="group" [clearable]="true" (clear)="filterData('clear')" (change)="filterData($event)"></ng-select>
+                        [items]="taskFilterOptions" bindValue="value" bindLabel="label" groupBy="group" [clearable]="true" (clear)="filterData('clear')" (change)="filterData($event)"></ng-select>
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1"><i
                                 class="fa-solid fa-magnifying-glass"></i></span>
@@ -31,7 +33,7 @@
                     <tr>
                         <th scope="col"><input class="form-check-input" type="checkbox" value="" [checked]="isAllSelected()"
                                 (change)="selectAll($event)" id="flexCheckDefault"></th>
-                        <th scope="col">Ticket ID</th>
+                        <th scope="col">Task ID</th>
                         <th scope="col">Title</th>
                         <th scope="col">Type</th>
                         <th scope="col">Priority</th>
@@ -43,24 +45,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let ticket of ticketListCurrent$ | async">
-                        <td><input class="form-check-input" type="checkbox" [checked]="selectedIds.has(ticket.id)"
-                                (change)="selectTicket($event, ticket.id)" id="checkbox-{{ticket.id}}"></td>
-                        <td>{{ticket.id}}</td>
-                        <td>{{ticket.title}}</td>
-                        <td>{{ticket.type}}</td>
+                    <tr *ngFor="let task of taskListCurrent$ | async">
+                        <td><input class="form-check-input" type="checkbox" [checked]="selectedIds.has(task.id)"
+                                (change)="selectTask($event, task.id)" id="checkbox-{{task.id}}"></td>
+                        <td>{{task.id}}</td>
+                        <td>{{task.title}}</td>
+                        <td>{{task.type}}</td>
                         <td><span class="badge"
-                                [ngClass]="{'medium':ticket.priority=='Medium','low':ticket.priority=='Low','critical':ticket.priority=='Critical','high':ticket.priority=='High'}">{{ticket.priority}}</span>
+                                [ngClass]="{'medium':task.priority=='Medium','low':task.priority=='Low','critical':task.priority=='Critical','high':task.priority=='High'}">{{task.priority}}</span>
                         </td>
-                        <td>{{ticket.assignee}}</td>
-                        <td>{{ticket.createdAt | date:'dd/mm/yy'}}</td>
-                        <td>{{ticket.dueDate}}</td>
+                        <td>{{task.assignee}}</td>
+                        <td>{{task.createdAt | date:'dd/mm/yy'}}</td>
+                        <td>{{task.dueDate}}</td>
                         <td><span class="badge"
-                                [ngClass]="{'open':ticket.status==='Open','in-progress':ticket.status==='In Progress','in-review':ticket.status==='In Review','completed':ticket.status==='Completed'}">{{ticket.status}}</span>
+                                [ngClass]="{'open':task.status==='Open','in-progress':task.status==='In Progress','in-review':task.status==='In Review','completed':task.status==='Completed'}">{{task.status}}</span>
                         </td>
                         <td><span class="action"><button type="button" class="action-btn"><i
                                         class="fa-regular fa-pen-to-square me-1"></i></button><button type="button"
-                                    class="action-btn" (click)="deleteItemConfirm(ticket.id)"><i class="fa-regular fa-trash-can"></i></button></span></td>
+                                    class="action-btn" (click)="deleteItemConfirm(task.id)"><i class="fa-regular fa-trash-can"></i></button></span></td>
                     </tr>
                 </tbody>
             </table>

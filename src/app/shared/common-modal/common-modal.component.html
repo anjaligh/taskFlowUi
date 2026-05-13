@@ -1,0 +1,16 @@
+<p-dialog header="Add Task" [modal]="true" [(visible)]="visible" [style]="{ width: '45rem' }" (onHide)="visibleChange.emit(false)">
+    <form *ngIf="visible" [formGroup]="formGroup" (ngSubmit)="submitForm()">
+        <div class="mb-3" *ngFor="let field of formFields">
+            <label for="{{field.controlName}}" class="form-label">{{field.label}}</label>
+            <ng-container [ngSwitch]="field.type">
+                <input *ngSwitchCase="'text'" type="text" class="form-control" [formControlName]="field.controlName" placeholder="{{field.placeholder}}" id="{{field.controlName}}">
+                <select *ngSwitchCase="'select'" class="form-control" [formControlName]="field.controlName">
+                    <option value="" disabled selected hidden>{{field.placeholder}}</option>
+                    <option *ngFor="let type of field.options.data" [value]="type[field.options.bindValue]">{{ type[field.options.bindValue] }}</option>
+                </select>
+            </ng-container>
+
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</p-dialog>
