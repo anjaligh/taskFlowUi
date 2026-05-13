@@ -36,7 +36,7 @@ export class TasksListComponent {
       { label: 'Created On', controlName: 'createdOn', type: 'date' },
       { label: 'Due Date', controlName: 'dueDate', type: 'date' }
     ]
-    let group !: any;
+    let group : any ={};
     this.taskFormFields.forEach(field => group[field.controlName] = [''])
     this.taskFormGroup = this.fb.group(group)
     this.taskFilterOptions = TICKET_FILTER_OPTIONS;
