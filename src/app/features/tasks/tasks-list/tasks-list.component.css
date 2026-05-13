@@ -15,7 +15,15 @@
     border: none;
     box-shadow: none;
 }
+::ng-deep .ng-dropdown-panel {
+    max-height: none !important;
+    overflow: visible !important;
+}
 
+::ng-deep .ng-dropdown-panel-items {
+    max-height: 100px !important;
+    overflow-y: auto !important;
+}
 .list-table {
     border: none;
 }
