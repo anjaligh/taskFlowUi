@@ -1,6 +1,5 @@
-<div class="card flex justify-center" *ngIf="visible">
-<app-common-modal [visible]="visible" [types]="taskType"></app-common-modal>>
-</div>
+<!-- <div class="card flex justify-center" *ngIf="visible"> -->
+<app-common-modal [(visible)]="visible" [formFields]="taskFormFields" [formGroup]="taskFormGroup" (submitEvent)="submitForm($event)"></app-common-modal>
 <div class="container-fluid px-0 page">
     <div class="head-section">
         <div class="left">Tasks</div>

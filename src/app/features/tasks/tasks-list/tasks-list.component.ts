@@ -21,28 +21,27 @@ export class TasksListComponent {
   taskStatus!: any[];
   selectedIds = new Set<string>;
   visible = false;
-  taskFormGroup !: FormGroup
+  taskFormGroup !: FormGroup;
   taskFormFields!: formFieldModel[];
   constructor(public tasksService: TasksListService, private fb: FormBuilder) {
     this.taskListCurrent$ = this.tasksService.filteredArray$
   }
   ngOnInit() {
-    this.taskFormFields = [
-      { label: 'Title', controlName: 'title', type: 'text' },
-      { label: 'Type', controlName: 'type', type: 'select', options: this.taskType },
-      { label: 'Status', controlName: 'status', type: 'select', options: this.taskStatus },
-      { label: 'Assignee', controlName: 'assignee', type: 'select', options: ['John', 'Jane', 'Doe'] },
-      { label: 'Priority', controlName: 'priority', type: 'select', options: this.taskPriority },
-      { label: 'Created On', controlName: 'createdOn', type: 'date' },
-      { label: 'Due Date', controlName: 'dueDate', type: 'date' }
-    ]
-    let group : any ={};
-    this.taskFormFields.forEach(field => group[field.controlName] = [''])
-    this.taskFormGroup = this.fb.group(group)
     this.taskFilterOptions = TICKET_FILTER_OPTIONS;
     this.taskType = this.taskFilterOptions.filter(item => item.group === 'Type');
     this.taskPriority = this.taskFilterOptions.filter(item => item.group === 'Priority');
     this.taskStatus = this.taskFilterOptions.filter(item => item.group === 'Status');
+        this.taskFormFields = [
+      { label: 'Title', controlName: 'title', type: 'text', placeholder:'Enter Task title' },
+      { label: 'Type', controlName: 'type', type: 'select',placeholder:'Select Task type', options: {data:this.taskType, bindlabel:'label', bindValue:'value'} },
+      { label: 'Status', controlName: 'status', type: 'select',placeholder:'Select Task Status', options: {data:this.taskStatus, bindlabel:'label', bindValue:'value' }},
+      { label: 'Assignee', controlName: 'assignee', type: 'select', placeholder:'Select Assignee',options: {data:['John', 'Jane', 'Doe'] , bindlabel:'label', bindValue:'value'}},
+      { label: 'Priority', controlName: 'priority', type: 'select', placeholder:'Select Task priority',options: {data:this.taskPriority, bindlabel:'label', bindValue:'value'} },
+      { label: 'Due Date', controlName: 'dueDate', type: 'date', placeholder:'Select Due Date' }
+    ]        
+    let group : any ={};
+    this.taskFormFields.forEach(field => group[field.controlName] = [''])
+    this.taskFormGroup = this.fb.group(group)
   }
   selectAll(event: any) {
     const checked = event.target.checked;
@@ -103,5 +102,12 @@ export class TasksListComponent {
   }
   openModal() {
     this.visible = true;
+  }
+  submitForm(event:any){
+    console.log(event);
+    
+  }
+  closeModal(){
+    this.visible=false;
   }
 }

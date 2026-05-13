@@ -1,7 +1,8 @@
 export interface formFieldModel {
     label: string;
     controlName: string;
+    placeholder: string;
     type: 'text' | 'select' | 'date';
-    options?: any[];
+    options?: any;
     validators?: any[];
 }
