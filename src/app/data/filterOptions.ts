@@ -16,3 +16,8 @@ export const TICKET_FILTER_OPTIONS = [
   { label: 'Feature', value: 'Feature', group: 'Type' },
   { label: 'Task', value: 'Task', group: 'Type' }
 ];
+export const EMPLOYEES = [
+  { label: 'John', value: 'John' },
+  { label: 'Jane', value: 'Jane' },
+  { label: 'Doe', value: 'Doe' }
+]
