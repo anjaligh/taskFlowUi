@@ -5,44 +5,48 @@ import { EMPLOYEES, TICKET_FILTER_OPTIONS } from 'src/app/data/filterOptions';
 import { TICKET_LIST } from 'src/app/data/ticketData';
 import { TasksListService } from './tasks-list.service';
 import Swal from 'sweetalert2';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { formFieldModel } from 'src/app/core/model/form-field-model';
 @Component({
   selector: 'app-tasks-list',
   templateUrl: './tasks-list.component.html',
   styleUrls: ['./tasks-list.component.css']
 })
 export class TasksListComponent {
-  ticketListCurrent$!: Observable<TicketModel[]>;
-  ticketFilterOptions!: any[];
+  taskListCurrent$!: Observable<TicketModel[]>;
+  taskFilterOptions!: any[];
+  taskType!: any[];
+  taskPriority!: any[];
+  taskAssignee!: any[];
+  taskStatus!: any[];
   selectedIds = new Set<string>;
-  constructor(public tasksService: TasksListService) {
-    this.ticketListCurrent$ = this.tasksService.filteredArray$
+  visible = false;
+  taskFormGroup !: FormGroup;
+  taskFormFields!: formFieldModel[];
+  constructor(public tasksService: TasksListService, private fb: FormBuilder) {
+    this.taskListCurrent$ = this.tasksService.filteredArray$
   }
   ngOnInit() {
-<<<<<<< Updated upstream
-    this.ticketFilterOptions = TICKET_FILTER_OPTIONS;
-=======
     this.taskFilterOptions = TICKET_FILTER_OPTIONS;
     this.taskType = this.taskFilterOptions.filter(item => item.group === 'Type');
     this.taskPriority = this.taskFilterOptions.filter(item => item.group === 'Priority');
     this.taskStatus = this.taskFilterOptions.filter(item => item.group === 'Status');
-    this.taskAssignee = EMPLOYEES;
-    this.taskFormFields = [
-      { label: 'Title', controlName: 'title', type: 'text', placeholder: 'Enter Task title' },
-      { label: 'Type', controlName: 'type', type: 'select', placeholder: 'Select Task type', options: { data: this.taskType, bindlabel: 'label', bindValue: 'value' } },
-      { label: 'Status', controlName: 'status', type: 'select', placeholder: 'Select Task Status', options: { data: this.taskStatus, bindlabel: 'label', bindValue: 'value' } },
-      { label: 'Assignee', controlName: 'assignee', type: 'select', placeholder: 'Select Assignee', options: { data: this.taskAssignee, bindlabel: 'label', bindValue: 'value' } },
-      { label: 'Priority', controlName: 'priority', type: 'select', placeholder: 'Select Task priority', options: { data: this.taskPriority, bindlabel: 'label', bindValue: 'value' } },
-      { label: 'Due Date', controlName: 'dueDate', type: 'date', placeholder: 'Select Due Date' }
-    ]
+        this.taskFormFields = [
+      { label: 'Title', controlName: 'title', type: 'text', placeholder:'Enter Task title' },
+      { label: 'Type', controlName: 'type', type: 'select',placeholder:'Select Task type', options: {data:this.taskType, bindlabel:'label', bindValue:'value'} },
+      { label: 'Status', controlName: 'status', type: 'select',placeholder:'Select Task Status', options: {data:this.taskStatus, bindlabel:'label', bindValue:'value' }},
+      { label: 'Assignee', controlName: 'assignee', type: 'select', placeholder:'Select Assignee',options: {data:['John', 'Jane', 'Doe'] , bindlabel:'label', bindValue:'value'}},
+      { label: 'Priority', controlName: 'priority', type: 'select', placeholder:'Select Task priority',options: {data:this.taskPriority, bindlabel:'label', bindValue:'value'} },
+      { label: 'Due Date', controlName: 'dueDate', type: 'date', placeholder:'Select Due Date' }
+    ]        
     let group : any ={};
     this.taskFormFields.forEach(field => group[field.controlName] = [''])
     this.taskFormGroup = this.fb.group(group)
->>>>>>> Stashed changes
   }
   selectAll(event: any) {
     const checked = event.target.checked;
     if (checked) {
-      this.tasksService.allData.forEach((ticket: any) => this.selectedIds.add(ticket.id))
+      this.tasksService.allData.forEach((task: any) => this.selectedIds.add(task.id))
     } else {
       this.selectedIds.clear()
     }
@@ -51,7 +55,7 @@ export class TasksListComponent {
   isAllSelected() {
     return this.tasksService.allData.every(item => this.selectedIds.has(item.id))
   }
-  selectTicket(event: any, value: string) {
+  selectTask(event: any, value: string) {
     const checked = event.target.checked;
     if (checked) {
       this.selectedIds.add(value);
@@ -85,15 +89,15 @@ export class TasksListComponent {
       cancelButtonText: 'Cancel',
       showCancelButton: true
     }).then((result) => {
-      if(result.isConfirmed){
+      if (result.isConfirmed) {
         this.tasksService.deleteData(event);
         Swal.fire({
           title: 'Successfully Deleted!',
-          text:'Record deleted successfully',
+          text: 'Record deleted successfully',
           confirmButtonText: 'Close',
         })
       }
-      
+
     })
   }
 <<<<<<< Updated upstream
