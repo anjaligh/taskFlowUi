@@ -3,11 +3,17 @@
         <div class="mb-3" *ngFor="let field of formFields">
             <label for="{{field.controlName}}" class="form-label">{{field.label}}</label>
             <ng-container [ngSwitch]="field.type">
-                <input *ngSwitchCase="'text'" type="text" class="form-control" [formControlName]="field.controlName" placeholder="{{field.placeholder}}" id="{{field.controlName}}">
+                <input *ngSwitchCase="'text'" type="text" class="form-control" [formControlName]="field.controlName"
+                    placeholder="{{field.placeholder}}" id="{{field.controlName}}">
                 <select *ngSwitchCase="'select'" class="form-control" [formControlName]="field.controlName">
                     <option value="" disabled selected hidden>{{field.placeholder}}</option>
-                    <option *ngFor="let type of field.options.data" [value]="type[field.options.bindValue]">{{ type[field.options.bindValue] }}</option>
+                    <option *ngFor="let type of field.options.data" [value]="type[field.options.bindValue]">{{
+                        type[field.options.bindValue] }}</option>
                 </select>
+                <p-calendar *ngSwitchCase="'date'" class="form-control" styleClass="custom-month-picker"
+                    [formControlName]="field.controlName" styleClass="custom-month-picker"
+                    panelStyleClass="small-calendar-panel" appendTo="body"
+                    [inputStyle]="{'width': '100%', 'height': '100%', 'padding': '0 8px', 'font-size': '13px', 'outline': 'none', 'box-shadow': 'none', 'border': 'none'}" />
             </ng-container>
 
         </div>

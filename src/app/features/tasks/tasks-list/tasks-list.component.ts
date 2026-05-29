@@ -100,8 +100,6 @@ export class TasksListComponent {
 
     })
   }
-<<<<<<< Updated upstream
-=======
   openModal() {
     this.visible = true;
   }
@@ -116,5 +114,4 @@ export class TasksListComponent {
     this.taskFormGroup.reset(group)
     this.visible = false;
   }
->>>>>>> Stashed changes
 }
