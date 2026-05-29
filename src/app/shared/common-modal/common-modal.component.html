@@ -14,9 +14,13 @@
                     [formControlName]="field.controlName" styleClass="custom-month-picker"
                     dateFormat="dd/mm/yy"
                     panelStyleClass="small-calendar-panel" appendTo="body"
-                    [inputStyle]="{'width': '100%', 'height': '100%', 'padding': '0 8px', 'font-size': '13px', 'outline': 'none', 'box-shadow': 'none', 'border': 'none'}" />
+                    placeholder="Select Date"
+                    [minDate]="tomorrow"
+                    [inputStyle]="{'width': '100%', 'height': '100%', 'padding': '0px', 'font-size': '1rem','font-weight':'400','color':'#212529', 'outline': 'none', 'box-shadow': 'none', 'border': 'none'}" />
             </ng-container>
-
+                <div *ngIf="submitted === true && form[field.controlName].errors">
+                    <small class="error-msg" *ngIf="form[field.controlName]?.errors?.['required']">{{field.label}} is required</small>
+                </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

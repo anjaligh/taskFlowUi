@@ -1,0 +1,8 @@
+/* 1. Shrink the input box height and text scale */
+::ng-deep .custom-month-picker .p-inputtext::placeholder{
+    color: #212529;
+}
+.error-msg{
+    color: red;
+    font-size: 12px;
+}

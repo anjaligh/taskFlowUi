@@ -83,7 +83,10 @@ export class TasksListService {
   setData(data: TicketModel[]) {
     this.filteredArray$.next(data);
   }
-
+  addData(data: TicketModel) {
+    this._data = [...this._data, data]
+    this.search$.next();
+  }
   private _set(patch: Partial<State>) {
     Object.assign(this._state, patch);
     this.search$.next();
@@ -98,7 +101,7 @@ export class TasksListService {
   }
   deleteData(id: string) {
     const index = this._data.findIndex((item: any) => item.id === id);
-    this._data.splice(index,1)
+    this._data.splice(index, 1)
     this.search$.next();
   }
 }

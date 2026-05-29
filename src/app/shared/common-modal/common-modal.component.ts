@@ -9,22 +9,37 @@ import { formFieldModel } from 'src/app/core/model/form-field-model';
   templateUrl: './common-modal.component.html',
   styleUrls: ['./common-modal.component.css'],
   standalone: true,
-  imports: [DialogModule, CommonModule, ReactiveFormsModule, CalendarModule ]
+  imports: [DialogModule, CommonModule, ReactiveFormsModule, CalendarModule]
 })
 export class CommonModalComponent {
   @Input() visible!: boolean;
   @Input() formFields!: formFieldModel[];
   @Input() formGroup!: FormGroup;
-  @Output() submitEvent =new EventEmitter();
-   @Output() closeDialog =new EventEmitter();
-   @Output() visibleChange =new EventEmitter<boolean>();
-
+  @Output() submitEvent = new EventEmitter();
+  @Output() closeDialog = new EventEmitter();
+  @Output() visibleChange = new EventEmitter<boolean>();
+  submitted = false;
+  tomorrow !: Date;
+  ngOnInit() {
+    const today = new Date();
+    this.tomorrow = new Date(today);
+    this.tomorrow.setDate(today.getDate() + 1)
+  }
   submitForm() {
     console.log(this.formGroup.value);
-    this.submitEvent.emit(this.formGroup.value)
+    this.submitted = true;
+    if (this.formGroup.valid) {
+      this.submitEvent.emit(this.formGroup.value)
+    }
+
   }
-close(){
-  this.visibleChange.emit(false);
-  this.closeDialog.emit()
-}
+
+  get form() {
+    return this.formGroup.controls;
+  }
+
+  close() {
+    this.visibleChange.emit(false);
+    this.closeDialog.emit()
+  }
 }
