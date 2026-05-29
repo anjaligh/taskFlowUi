@@ -12,6 +12,7 @@
                 </select>
                 <p-calendar *ngSwitchCase="'date'" class="form-control" styleClass="custom-month-picker"
                     [formControlName]="field.controlName" styleClass="custom-month-picker"
+                    dateFormat="dd/mm/yy"
                     panelStyleClass="small-calendar-panel" appendTo="body"
                     [inputStyle]="{'width': '100%', 'height': '100%', 'padding': '0 8px', 'font-size': '13px', 'outline': 'none', 'box-shadow': 'none', 'border': 'none'}" />
             </ng-container>
