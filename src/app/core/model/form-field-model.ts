@@ -5,4 +5,5 @@ export interface formFieldModel {
     type: 'text' | 'select' | 'date';
     options?: any;
     validators?: any[];
+    errorMsg?: string
 }

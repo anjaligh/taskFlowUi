@@ -20,6 +20,7 @@
             </ng-container>
                 <div *ngIf="submitted === true && form[field.controlName].errors">
                     <small class="error-msg" *ngIf="form[field.controlName]?.errors?.['required']">{{field.label}} is required</small>
+                    <small class="error-msg" *ngIf="form[field.controlName]?.errors?.['pattern']">{{field.errorMsg}}</small>
                 </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>

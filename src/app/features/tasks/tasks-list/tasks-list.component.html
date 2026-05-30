@@ -59,7 +59,7 @@
                         <td><span class="badge"
                                 [ngClass]="{'open':task.status==='Open','in-progress':task.status==='In Progress','in-review':task.status==='In Review','completed':task.status==='Completed'}">{{task.status}}</span>
                         </td>
-                        <td><span class="action"><button type="button" class="action-btn"><i
+                        <td><span class="action"><button type="button" class="action-btn" (click)="editTask(task)" ><i
                                         class="fa-regular fa-pen-to-square me-1"></i></button><button type="button"
                                     class="action-btn" (click)="deleteItemConfirm(task.id)"><i class="fa-regular fa-trash-can"></i></button></span></td>
                     </tr>

@@ -33,7 +33,7 @@ export class TasksListComponent {
     this.taskStatus = this.taskFilterOptions.filter(item => item.group === 'Status');
     this.taskAssignee = EMPLOYEES
     this.taskFormFields = [
-      { label: 'Title', controlName: 'title', type: 'text', placeholder: 'Enter Task title' },
+      { label: 'Title', controlName: 'title', type: 'text', placeholder: 'Enter Task title',errorMsg:'Title must contain only letters' },
       { label: 'Type', controlName: 'type', type: 'select', placeholder: 'Select Task type', options: { data: this.taskType, bindlabel: 'label', bindValue: 'value' } },
       { label: 'Status', controlName: 'status', type: 'select', placeholder: 'Select Task Status', options: { data: this.taskStatus, bindlabel: 'label', bindValue: 'value' } },
       { label: 'Assignee', controlName: 'assignee', type: 'select', placeholder: 'Select Assignee', options: { data: this.taskAssignee, bindlabel: 'label', bindValue: 'value' } },
@@ -41,8 +41,15 @@ export class TasksListComponent {
       { label: 'Due Date', controlName: 'dueDate', type: 'date', placeholder: 'Select Due Date' }
     ]
     let group: any = {};
-    this.taskFormFields.forEach(field => group[field.controlName] = ['', Validators.required])
-    this.taskFormGroup = this.fb.group(group)
+    // this.taskFormFields.forEach(field => group[field.controlName] = ['', Validators.required])
+    this.taskFormGroup = this.fb.group({
+      title:['', [Validators.required,Validators.pattern('[A-Za-z ]+')]],
+      type:['', Validators.required],
+      status:['', Validators.required],
+      assignee:['', Validators.required],
+      priority:['', Validators.required],
+      dueDate:['', Validators.required]
+    })
   }
   selectAll(event: any) {
     const checked = event.target.checked;
@@ -115,7 +122,7 @@ export class TasksListComponent {
       priority: event.priority,
       assignee: event.assignee,
       createdAt: new Date().toISOString(),
-      dueDate: event.dueDate.toISOString(),
+      dueDate: event?.dueDate.toISOString(),
     }
     this.tasksService.addData(newData)
     this.closeModal();
@@ -134,5 +141,14 @@ export class TasksListComponent {
     this.taskFormFields.forEach(field => group[field.controlName] = [''])
     this.taskFormGroup.reset(group)
     this.visible = false;
+  }
+  editTask(task:any){
+    this.taskFormGroup?.get('title')?.setValue(task.title);
+    this.taskFormGroup?.get('assignee')?.setValue(task.assignee);
+    this.taskFormGroup?.get('type')?.setValue(task.type);
+    this.taskFormGroup?.get('status')?.setValue(task.status);
+    this.taskFormGroup?.get('priority')?.setValue(task.priority);
+    this.taskFormGroup?.get('dueDate')?.setValue(task.dueDate);
+    this.visible = true;
   }
 }
