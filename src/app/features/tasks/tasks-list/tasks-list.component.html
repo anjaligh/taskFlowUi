@@ -1,4 +1,4 @@
-<app-common-modal [(visible)]="visible" [formFields]="taskFormFields" [formGroup]="taskFormGroup" (submitEvent)="submitForm($event)" (closeDialog)="closeModal()"></app-common-modal>
+<app-common-modal [(visible)]="visible" [formFields]="taskFormFields" [formGroup]="taskFormGroup" (submitEvent)="submitForm($event)" (closeDialog)="closeModal()" [editForm]="editForm"></app-common-modal>
 <div class="container-fluid px-0 page">
     <div class="head-section">
         <div class="left">Tasks</div>
@@ -54,8 +54,8 @@
                                 [ngClass]="{'medium':task.priority=='Medium','low':task.priority=='Low','critical':task.priority=='Critical','high':task.priority=='High'}">{{task.priority}}</span>
                         </td>
                         <td>{{task.assignee}}</td>
-                        <td>{{task.createdAt | date:'dd/mm/yy'}}</td>
-                        <td>{{task.dueDate}}</td>
+                        <td>{{task.createdAt | date:'dd/MM/yy'}}</td>
+                        <td>{{task.dueDate | date: 'dd/MM/yy'}}</td>
                         <td><span class="badge"
                                 [ngClass]="{'open':task.status==='Open','in-progress':task.status==='In Progress','in-review':task.status==='In Review','completed':task.status==='Completed'}">{{task.status}}</span>
                         </td>

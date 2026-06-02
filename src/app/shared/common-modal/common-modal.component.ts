@@ -13,6 +13,7 @@ import { formFieldModel } from 'src/app/core/model/form-field-model';
 })
 export class CommonModalComponent {
   @Input() visible!: boolean;
+  @Input() editForm!: boolean;
   @Input() formFields!: formFieldModel[];
   @Input() formGroup!: FormGroup;
   @Output() submitEvent = new EventEmitter();

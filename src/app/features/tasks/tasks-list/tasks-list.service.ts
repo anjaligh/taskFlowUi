@@ -104,4 +104,9 @@ export class TasksListService {
     this._data.splice(index, 1)
     this.search$.next();
   }
+  updateData(data:TicketModel) {
+    const index = this._data.findIndex((item: any) => item.id === data.id);
+    this._data[index]= data;
+    this.search$.next();
+  }
 }

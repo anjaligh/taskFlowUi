@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { TasksRoutingModule } from './tasks-routing.module';
 import { TasksListComponent } from './tasks-list/tasks-list.component';
@@ -21,6 +21,9 @@ import { DialogModule } from 'primeng/dialog';
     PaginationComponent,
     CommonModalComponent,
     DialogModule
+  ],
+  providers:[
+    DatePipe
   ]
 })
 export class TasksModule { }
