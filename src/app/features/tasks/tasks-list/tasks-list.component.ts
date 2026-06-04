@@ -45,12 +45,14 @@ export class TasksListComponent {
     let group: any = {};
     // this.taskFormFields.forEach(field => group[field.controlName] = ['', Validators.required])
     this.taskFormGroup = this.fb.group({
+      id:[''],
       title: ['', [Validators.required, Validators.pattern('[A-Za-z ]+')]],
       type: ['', Validators.required],
       status: ['', Validators.required],
       assignee: ['', Validators.required],
       priority: ['', Validators.required],
-      dueDate: ['', Validators.required]
+      dueDate: ['', Validators.required],
+      createdAt:[''],
     })
   }
   selectAll(event: any) {
@@ -91,6 +93,33 @@ export class TasksListComponent {
   pageChange(event: any) {
     this.tasksService.setPage(event.first, event.rows);
   }
+  deleteMultiple() {
+    if (this.selectedIds.size === 0) {
+      Swal.fire({
+        title: 'No Item Selected!',
+        text: 'Select an item to delete',
+        confirmButtonText: 'ok'
+      })
+    } else {
+      Swal.fire({
+        title: 'Delete!',
+        text: 'Are you sure you want to delete multiple records?',
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
+        showCancelButton: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.selectedIds.forEach(id => this.tasksService.deleteData(id))
+          Swal.fire({
+            title: 'Successfully Deleted!',
+            text: 'Record deleted successfully',
+            confirmButtonText: 'Close',
+          })
+        }
+      })
+    }
+
+  }
   deleteItemConfirm(event: any) {
     Swal.fire({
       title: 'Delete!',
@@ -114,15 +143,15 @@ export class TasksListComponent {
     this.visible = true;
   }
   submitForm(event: any) {
-    console.log(typeof (event));
+    console.log(this.taskFormGroup.value.id)
     const newData = {
-      id: `TKT-1${(this.tasksService.totalRecords + 1)}`,
+      id: this.editForm ? this.taskFormGroup.value.id : `TKT-1${(this.tasksService.totalRecords + 1)}`,
       title: event.title,
       type: event.type,
       status: event.status,
       priority: event.priority,
       assignee: event.assignee,
-      createdAt: new Date().toISOString(),
+      createdAt: this.editForm ? this.taskFormGroup.value.createdAt : new Date().toISOString(),
       dueDate: event?.dueDate.toISOString(),
     }
     if (!this.editForm) {
@@ -134,9 +163,9 @@ export class TasksListComponent {
           confirmButtonText: 'Close'
         })
       }, 100);
-    } else{
-       this.tasksService.updateData(newData);
-       this.closeModal();
+    } else {
+      this.tasksService.updateData(newData);
+      this.closeModal();
       setTimeout(() => {
         Swal.fire({
           title: 'Data updated successfully!',
@@ -156,12 +185,14 @@ export class TasksListComponent {
   }
   editTask(task: any) {
     this.editForm = true;
+    this.taskFormGroup?.get('id')?.setValue(task.id);
     this.taskFormGroup?.get('title')?.setValue(task.title);
     this.taskFormGroup?.get('assignee')?.setValue(task.assignee);
     this.taskFormGroup?.get('type')?.setValue(task.type);
     this.taskFormGroup?.get('status')?.setValue(task.status);
     this.taskFormGroup?.get('priority')?.setValue(task.priority);
     this.taskFormGroup?.get('dueDate')?.setValue(this.datePipe.transform(task.dueDate, 'dd/MM/yy'));
+    this.taskFormGroup?.get('createdAt')?.setValue(this.datePipe.transform(task.createdAt, 'dd/MM/yy'));
     this.visible = true;
   }
 }
