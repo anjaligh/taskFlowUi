@@ -130,151 +130,196 @@ export const TICKET_LIST:TicketModel[] = [
   {
     id: 'TKT-101',
     title: 'Fix login API error',
+    description: 'Users receive a 500 response when logging in with valid credentials.',
     type: 'Bug',
     status: 'In Progress',
     priority: 'High',
-    assignee: 'Anu',
+    assignee: 'Priya Nair',
+    reporter: 'Rahul Menon',
     createdAt: '2026-04-27T10:30:00',
-    dueDate: '2026-05-02'
+    updatedAt: '2026-04-28T09:15:00',
+    dueDate: '2026-05-02T00:00:00'
   },
   {
     id: 'TKT-102',
     title: 'Add export feature',
+    description: 'Allow users to export task data to Excel.',
     type: 'Feature',
     status: 'Open',
     priority: 'Medium',
-    assignee: 'Rahul',
+    assignee: 'John Mathew',
+    reporter: 'Rahul Menon',
     createdAt: '2026-04-26T14:15:00',
-    dueDate: '2026-05-04'
+    updatedAt: '2026-04-26T14:15:00',
+    dueDate: '2026-05-04T00:00:00'
   },
   {
     id: 'TKT-103',
     title: 'Update UI alignment',
+    description: 'Fix alignment issues on dashboard cards.',
     type: 'Task',
     status: 'Completed',
     priority: 'Low',
-    assignee: 'Meera',
+    assignee: 'John Mathew',
+    reporter: 'Neha Sharma',
     createdAt: '2026-04-25T09:00:00',
-    dueDate: '2026-04-30'
+    updatedAt: '2026-04-29T16:30:00',
+    dueDate: '2026-04-30T00:00:00'
   },
   {
     id: 'TKT-104',
     title: 'Fix payment gateway issue',
+    description: 'Payment requests fail intermittently.',
     type: 'Bug',
     status: 'In Review',
     priority: 'Critical',
-    assignee: 'Arjun',
+    assignee: 'Priya Nair',
+    reporter: 'Sarah Joseph',
     createdAt: '2026-04-24T11:20:00',
-    dueDate: '2026-04-29'
+    updatedAt: '2026-04-28T11:45:00',
+    dueDate: '2026-04-29T00:00:00'
   },
   {
     id: 'TKT-105',
     title: 'Implement role-based access',
+    description: 'Restrict feature access based on user roles.',
     type: 'Feature',
     status: 'In Progress',
     priority: 'High',
-    assignee: 'Neha',
+    assignee: 'John Mathew',
+    reporter: 'Rahul Menon',
     createdAt: '2026-04-23T16:45:00',
-    dueDate: '2026-05-01'
+    updatedAt: '2026-04-25T10:20:00',
+    dueDate: '2026-05-01T00:00:00'
   },
   {
     id: 'TKT-106',
     title: 'Fix chart rendering bug',
+    description: 'Charts overlap when resizing browser window.',
     type: 'Bug',
     status: 'Completed',
     priority: 'Medium',
-    assignee: 'Rahul',
+    assignee: 'Priya Nair',
+    reporter: 'Neha Sharma',
     createdAt: '2026-04-22T13:10:00',
-    dueDate: '2026-04-28'
+    updatedAt: '2026-04-27T15:10:00',
+    dueDate: '2026-04-28T00:00:00'
   },
   {
     id: 'TKT-107',
     title: 'Add notification service',
+    description: 'Send notifications when task status changes.',
     type: 'Feature',
     status: 'Open',
     priority: 'Medium',
-    assignee: 'Anu',
+    assignee: 'John Mathew',
+    reporter: 'Rahul Menon',
     createdAt: '2026-04-21T10:00:00',
-    dueDate: '2026-05-05'
+    updatedAt: '2026-04-21T10:00:00',
+    dueDate: '2026-05-05T00:00:00'
   },
   {
     id: 'TKT-108',
     title: 'Fix sidebar responsiveness',
+    description: 'Sidebar breaks on tablet-sized screens.',
     type: 'Bug',
     status: 'In Progress',
     priority: 'Low',
-    assignee: 'Meera',
+    assignee: 'John Mathew',
+    reporter: 'Neha Sharma',
     createdAt: '2026-04-20T15:30:00',
-    dueDate: '2026-04-27'
+    updatedAt: '2026-04-24T13:40:00',
+    dueDate: '2026-04-27T00:00:00'
   },
   {
     id: 'TKT-109',
     title: 'Optimize API performance',
+    description: 'Reduce API response times for dashboard endpoints.',
     type: 'Task',
     status: 'Open',
     priority: 'High',
-    assignee: 'Arjun',
+    assignee: 'Priya Nair',
+    reporter: 'Rahul Menon',
     createdAt: '2026-04-19T12:25:00',
-    dueDate: '2026-05-03'
+    updatedAt: '2026-04-20T09:50:00',
+    dueDate: '2026-05-03T00:00:00'
   },
   {
     id: 'TKT-110',
     title: 'Fix dropdown selection issue',
+    description: 'Dropdown loses selected value after refresh.',
     type: 'Bug',
     status: 'In Review',
     priority: 'High',
-    assignee: 'Neha',
+    assignee: 'John Mathew',
+    reporter: 'Neha Sharma',
     createdAt: '2026-04-18T17:40:00',
-    dueDate: '2026-04-26'
+    updatedAt: '2026-04-24T17:15:00',
+    dueDate: '2026-04-26T00:00:00'
   },
   {
     id: 'TKT-111',
     title: 'Improve form validation',
+    description: 'Add validation messages and error handling.',
     type: 'Task',
     status: 'Completed',
     priority: 'Low',
-    assignee: 'Rahul',
+    assignee: 'John Mathew',
+    reporter: 'Rahul Menon',
     createdAt: '2026-04-17T09:15:00',
-    dueDate: '2026-04-24'
+    updatedAt: '2026-04-23T11:30:00',
+    dueDate: '2026-04-24T00:00:00'
   },
   {
     id: 'TKT-112',
     title: 'Add audit logs',
+    description: 'Track task creation and update history.',
     type: 'Feature',
     status: 'Open',
     priority: 'Medium',
-    assignee: 'Anu',
+    assignee: 'Priya Nair',
+    reporter: 'Sarah Joseph',
     createdAt: '2026-04-16T11:50:00',
-    dueDate: '2026-05-06'
+    updatedAt: '2026-04-18T14:20:00',
+    dueDate: '2026-05-06T00:00:00'
   },
   {
     id: 'TKT-113',
     title: 'Fix mobile layout issues',
+    description: 'Correct responsive layout problems on mobile devices.',
     type: 'Bug',
     status: 'In Progress',
     priority: 'High',
-    assignee: 'Meera',
+    assignee: 'John Mathew',
+    reporter: 'Neha Sharma',
     createdAt: '2026-04-15T14:05:00',
-    dueDate: '2026-04-28'
+    updatedAt: '2026-04-26T10:45:00',
+    dueDate: '2026-04-28T00:00:00'
   },
   {
     id: 'TKT-114',
     title: 'Refactor authentication module',
+    description: 'Improve maintainability of authentication logic.',
     type: 'Task',
     status: 'In Review',
     priority: 'Critical',
-    assignee: 'Arjun',
+    assignee: 'Priya Nair',
+    reporter: 'Rahul Menon',
     createdAt: '2026-04-14T10:20:00',
-    dueDate: '2026-04-30'
+    updatedAt: '2026-04-29T16:00:00',
+    dueDate: '2026-04-30T00:00:00'
   },
   {
     id: 'TKT-115',
     title: 'Integrate third-party API',
+    description: 'Connect application with external analytics service.',
     type: 'Feature',
     status: 'Open',
     priority: 'High',
-    assignee: 'Neha',
+    assignee: 'Priya Nair',
+    reporter: 'Sarah Joseph',
     createdAt: '2026-04-13T13:35:00',
-    dueDate: '2026-05-07'
+    updatedAt: '2026-04-17T09:10:00',
+    dueDate: '2026-05-07T00:00:00'
   }
 ];

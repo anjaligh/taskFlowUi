@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { first, Observable } from 'rxjs';
 import { TicketModel } from 'src/app/core/model/ticket-model';
-import { EMPLOYEES, TICKET_FILTER_OPTIONS } from 'src/app/data/filterOptions';
-import { TICKET_LIST } from 'src/app/data/ticketData';
+import { TICKET_FILTER_OPTIONS } from 'src/app/data/filterOptions';
 import { TasksListService } from './tasks-list.service';
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { formFieldModel } from 'src/app/core/model/form-field-model';
 import { DatePipe } from '@angular/common';
+import { USERS } from 'src/app/data/users';
 @Component({
   selector: 'app-tasks-list',
   templateUrl: './tasks-list.component.html',
@@ -33,26 +33,28 @@ export class TasksListComponent {
     this.taskType = this.taskFilterOptions.filter(item => item.group === 'Type');
     this.taskPriority = this.taskFilterOptions.filter(item => item.group === 'Priority');
     this.taskStatus = this.taskFilterOptions.filter(item => item.group === 'Status');
-    this.taskAssignee = EMPLOYEES
+    this.taskAssignee = USERS
     this.taskFormFields = [
       { label: 'Title', controlName: 'title', type: 'text', placeholder: 'Enter Task title', errorMsg: 'Title must contain only letters' },
+      { label: 'Description', controlName: 'description', type: 'text-area', placeholder: 'Enter Task description', errorMsg: 'Description must contain only letters' },
       { label: 'Type', controlName: 'type', type: 'select', placeholder: 'Select Task type', options: { data: this.taskType, bindlabel: 'label', bindValue: 'value' } },
       { label: 'Status', controlName: 'status', type: 'select', placeholder: 'Select Task Status', options: { data: this.taskStatus, bindlabel: 'label', bindValue: 'value' } },
-      { label: 'Assignee', controlName: 'assignee', type: 'select', placeholder: 'Select Assignee', options: { data: this.taskAssignee, bindlabel: 'label', bindValue: 'value' } },
+      { label: 'Assignee', controlName: 'assignee', type: 'select', placeholder: 'Select Assignee', options: { data: this.taskAssignee, bindlabel: 'name', bindValue: 'name' } },
       { label: 'Priority', controlName: 'priority', type: 'select', placeholder: 'Select Task priority', options: { data: this.taskPriority, bindlabel: 'label', bindValue: 'value' } },
       { label: 'Due Date', controlName: 'dueDate', type: 'date', placeholder: 'Select Due Date' }
     ]
     let group: any = {};
     // this.taskFormFields.forEach(field => group[field.controlName] = ['', Validators.required])
     this.taskFormGroup = this.fb.group({
-      id:[''],
+      id: [''],
       title: ['', [Validators.required, Validators.pattern('[A-Za-z ]+')]],
+      description: ['', [Validators.required]],
       type: ['', Validators.required],
       status: ['', Validators.required],
       assignee: ['', Validators.required],
       priority: ['', Validators.required],
       dueDate: ['', Validators.required],
-      createdAt:[''],
+      createdAt: [''],
     })
   }
   selectAll(event: any) {
@@ -147,13 +149,18 @@ export class TasksListComponent {
     const newData = {
       id: this.editForm ? this.taskFormGroup.value.id : `TKT-1${(this.tasksService.totalRecords + 1)}`,
       title: event.title,
+      description:event.description,
       type: event.type,
       status: event.status,
       priority: event.priority,
       assignee: event.assignee,
+      reporter:event.reporter,
       createdAt: this.editForm ? this.taskFormGroup.value.createdAt : new Date().toISOString(),
+      updatedAt:new Date().toISOString(),
       dueDate: event?.dueDate.toISOString(),
     }
+    console.log(newData);
+
     if (!this.editForm) {
       this.tasksService.addData(newData)
       this.closeModal();
@@ -177,7 +184,6 @@ export class TasksListComponent {
 
   }
   closeModal() {
-    this.taskFormGroup.reset();
     let group: any = {};
     this.taskFormFields.forEach(field => group[field.controlName] = [''])
     this.taskFormGroup.reset(group)
@@ -191,8 +197,10 @@ export class TasksListComponent {
     this.taskFormGroup?.get('type')?.setValue(task.type);
     this.taskFormGroup?.get('status')?.setValue(task.status);
     this.taskFormGroup?.get('priority')?.setValue(task.priority);
-    this.taskFormGroup?.get('dueDate')?.setValue(this.datePipe.transform(task.dueDate, 'dd/MM/yy'));
-    this.taskFormGroup?.get('createdAt')?.setValue(this.datePipe.transform(task.createdAt, 'dd/MM/yy'));
+    this.taskFormGroup?.get('dueDate')?.setValue(new Date(task.dueDate));
+    this.taskFormGroup?.get('createdAt')?.setValue(task.createdAt);
+    console.log(this.taskFormGroup.value);
+
     this.visible = true;
   }
 }

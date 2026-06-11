@@ -16,10 +16,3 @@ export const TICKET_FILTER_OPTIONS = [
   { label: 'Feature', value: 'Feature', group: 'Type' },
   { label: 'Task', value: 'Task', group: 'Type' }
 ];
-export const EMPLOYEES = [
-  { label: 'Anu', value: 'Anu' },
-  { label: 'Rahul', value: 'Rahul' },
-  { label: 'Meera', value: 'Meera' },
-  { label: 'Arjun', value: 'Arjun' },
-  { label: 'Neha', value: 'Neha' }
-]
