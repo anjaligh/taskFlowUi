@@ -1,22 +1,26 @@
-<app-common-modal [(visible)]="visible" [formFields]="taskFormFields" [formGroup]="taskFormGroup" (submitEvent)="submitForm($event)" (closeDialog)="closeModal()" [editForm]="editForm"></app-common-modal>
+<app-common-modal [(visible)]="visible" [formFields]="taskFormFields" [formGroup]="taskFormGroup"
+    (submitEvent)="submitForm($event)" (closeDialog)="closeModal()" [editForm]="editForm"></app-common-modal>
 <div class="container-fluid px-0 page">
     <div class="head-section">
         <div class="left">Tasks</div>
         <div class="right">
             <button type="button" class="btn-common border-btn me-3">Export</button>
-            <button type="button" class="btn-common add-btn"(click)="openModal()"><i class="fas fa-plus"></i> Add Task</button>
+            <button type="button" class="btn-common add-btn" (click)="openModal()"><i class="fas fa-plus"></i> Add
+                Task</button>
         </div>
     </div>
     <div class="table-container">
-        <div class="table-wrapper"> 
+        <div class="table-wrapper">
             <div class="table-actions">
                 <div class="left">
                     <ng-select class="form-control filter-dropdown me-3" placeholder="Filter"
-                        [items]="taskFilterOptions" bindValue="value" bindLabel="label" groupBy="group" [clearable]="true" (clear)="filterData('clear')" (change)="filterData($event)"></ng-select>
+                        [items]="taskFilterOptions" bindValue="value" bindLabel="label" groupBy="group"
+                        [clearable]="true" (clear)="filterData('clear')" (change)="filterData($event)"></ng-select>
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1"><i
                                 class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" class="form-control search" [ngModel]="tasksService.searchText" (ngModelChange)="onSearch($event)" placeholder="Search" aria-label="search"
+                        <input type="text" class="form-control search" [ngModel]="tasksService.searchText"
+                            (ngModelChange)="onSearch($event)" placeholder="Search" aria-label="search"
                             aria-describedby="basic-addon1">
                     </div>
                 </div>
@@ -27,46 +31,52 @@
                             class="fa-regular fa-trash-can"></i></button>
                 </div>
             </div>
-            <table class="table list-table">
-                <thead>
-                    <tr>
-                        <th scope="col"><input class="form-check-input" type="checkbox" value="" [checked]="isAllSelected()"
-                                (change)="selectAll($event)" id="flexCheckDefault"></th>
-                        <th scope="col">Task ID</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Priority</th>
-                        <th scope="col">Assignee</th>
-                        <th scope="col">Created On</th>
-                        <th scope="col">Due Date</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let task of taskListCurrent$ | async">
-                        <td><input class="form-check-input" type="checkbox" [checked]="selectedIds.has(task.id)"
-                                (change)="selectTask($event, task.id)" id="checkbox-{{task.id}}"></td>
-                        <td>{{task.id}}</td>
-                        <td>{{task.title}}</td>
-                        <td>{{task.type}}</td>
-                        <td><span class="badge"
-                                [ngClass]="{'medium':task.priority=='Medium','low':task.priority=='Low','critical':task.priority=='Critical','high':task.priority=='High'}">{{task.priority}}</span>
-                        </td>
-                        <td>{{task.assignee}}</td>
-                        <td>{{task.createdAt | date:'dd/MM/yy'}}</td>
-                        <td>{{task.dueDate | date: 'dd/MM/yy'}}</td>
-                        <td><span class="badge"
-                                [ngClass]="{'open':task.status==='Open','in-progress':task.status==='In Progress','in-review':task.status==='In Review','completed':task.status==='Completed'}">{{task.status}}</span>
-                        </td>
-                        <td><span class="action"><button type="button" class="action-btn" (click)="editTask(task)" ><i
-                                        class="fa-regular fa-pen-to-square me-1"></i></button><button type="button"
-                                    class="action-btn" (click)="deleteItemConfirm(task.id)"><i class="fa-regular fa-trash-can"></i></button></span></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table list-table">
+                    <thead>
+                        <tr>
+                            <th scope="col"><input class="form-check-input" type="checkbox" value=""
+                                    [checked]="isAllSelected()" (change)="selectAll($event)" id="flexCheckDefault"></th>
+                            <th scope="col">Task ID</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Priority</th>
+                            <th scope="col">Assignee</th>
+                            <th scope="col">Created On</th>
+                            <th scope="col">Due Date</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let task of taskListCurrent$ | async">
+                            <td><input class="form-check-input" type="checkbox" [checked]="selectedIds.has(task.id)"
+                                    (change)="selectTask($event, task.id)" id="checkbox-{{task.id}}"></td>
+                            <td>{{task.id}}</td>
+                            <td>{{task.title}}</td>
+                            <td>{{task.type}}</td>
+                            <td><span class="badge"
+                                    [ngClass]="{'medium':task.priority=='Medium','low':task.priority=='Low','critical':task.priority=='Critical','high':task.priority=='High'}">{{task.priority}}</span>
+                            </td>
+                            <td>{{task.assignee}}</td>
+                            <td>{{task.createdAt | date:'dd/MM/yy'}}</td>
+                            <td>{{task.dueDate | date: 'dd/MM/yy'}}</td>
+                            <td><span class="badge"
+                                    [ngClass]="{'open':task.status==='Open','in-progress':task.status==='In Progress','in-review':task.status==='In Review','completed':task.status==='Completed'}">{{task.status}}</span>
+                            </td>
+                            <td><span class="action"><button type="button" class="action-btn"
+                                        (click)="editTask(task)"><i
+                                            class="fa-regular fa-pen-to-square me-1"></i></button><button type="button"
+                                        class="action-btn" (click)="deleteItemConfirm(task.id)"><i
+                                            class="fa-regular fa-trash-can"></i></button></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <div class="card flex justify-center border-none">
-                <app-pagination [first]="tasksService.first" [rows]="tasksService.rows" [totalRecords]="tasksService.totalRecords" [rowsPerPageOptions]="tasksService.rowsPerPage" (pageChange)="pageChange($event)"></app-pagination>
+                <app-pagination [first]="tasksService.first" [rows]="tasksService.rows"
+                    [totalRecords]="tasksService.totalRecords" [rowsPerPageOptions]="tasksService.rowsPerPage"
+                    (pageChange)="pageChange($event)"></app-pagination>
             </div>
         </div>
 

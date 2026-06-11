@@ -10,9 +10,11 @@ import { BreadcrumbsComponent } from 'src/app/shared/breadcrumbs/breadcrumbs.com
 })
 export class HeaderComponent {
   @Input() breadcrumbItems !: breadcrumbsItem[] 
-  @Output() toggleMenuVisibility = new EventEmitter() 
-  sidebarOpen = true;
+  @Output() toggleMenuVisibility = new EventEmitter()
+  @Input() sidebarOpen = true;
   toggleSideBar=()=>{
+    console.log('toggle');
+    
     this.sidebarOpen= !this.sidebarOpen
     this.toggleMenuVisibility.emit(this.sidebarOpen)
   }

@@ -14,3 +14,19 @@
 .content.expand {
     margin-left: 0px;
 }
+.overlay{
+    position: fixed;
+    display:none;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+@media (max-width:550px){
+    .content{
+        margin-left: 0px;
+    }
+    .overlay{
+        display: block;
+    }
+}

@@ -31,6 +31,7 @@ export class CommonModalComponent {
     this.submitted = true;
     if (this.formGroup.valid) {
       this.submitEvent.emit(this.formGroup.value)
+      this.submitted= false;
     }
 
   }

@@ -5,23 +5,24 @@
             <ng-container [ngSwitch]="field.type">
                 <input *ngSwitchCase="'text'" type="text" class="form-control" [formControlName]="field.controlName"
                     placeholder="{{field.placeholder}}" id="{{field.controlName}}">
+                <textarea *ngSwitchCase="'text-area'" class="form-control textarea" [formControlName]="field.controlName"
+                    placeholder="{{field.placeholder}}" id="{{field.controlName}}"></textarea>
                 <select *ngSwitchCase="'select'" class="form-control" [formControlName]="field.controlName">
                     <option value="" disabled selected hidden>{{field.placeholder}}</option>
                     <option *ngFor="let type of field.options.data" [value]="type[field.options.bindValue]">{{
                         type[field.options.bindValue] }}</option>
                 </select>
                 <p-calendar *ngSwitchCase="'date'" class="form-control" styleClass="custom-month-picker"
-                    [formControlName]="field.controlName" styleClass="custom-month-picker"
-                    dateFormat="dd/mm/yy"
-                    panelStyleClass="small-calendar-panel" appendTo="body"
-                    placeholder="Select Date"
+                    [formControlName]="field.controlName" styleClass="custom-month-picker" dateFormat="dd/mm/yy"
+                    panelStyleClass="small-calendar-panel" appendTo="body" placeholder="Select Date"
                     [minDate]="tomorrow"
                     [inputStyle]="{'width': '100%', 'height': '100%', 'padding': '0px', 'font-size': '1rem','font-weight':'400','color':'#212529', 'outline': 'none', 'box-shadow': 'none', 'border': 'none'}" />
             </ng-container>
-                <div *ngIf="submitted === true && form[field.controlName].errors">
-                    <small class="error-msg" *ngIf="form[field.controlName]?.errors?.['required']">{{field.label}} is required</small>
-                    <small class="error-msg" *ngIf="form[field.controlName]?.errors?.['pattern']">{{field.errorMsg}}</small>
-                </div>
+            <div *ngIf="submitted === true && form[field.controlName].errors">
+                <small class="error-msg" *ngIf="form[field.controlName]?.errors?.['required']">{{field.label}} is
+                    required</small>
+                <small class="error-msg" *ngIf="form[field.controlName]?.errors?.['pattern']">{{field.errorMsg}}</small>
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
