@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout/layout.component';
+import { RegisterComponent } from './features/register/register.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('./features/login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   },
   {
     path: '',
@@ -33,11 +38,11 @@ const routes: Routes = [
       },
       {
         path: 'tasks',
-        loadChildren:()=>
+        loadChildren: () =>
           import('./features/tasks/tasks.module').then(
-            (m)=>m.TasksModule
+            (m) => m.TasksModule
           )
-        }
+      }
     ]
   }
 ];

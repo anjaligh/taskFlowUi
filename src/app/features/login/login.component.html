@@ -17,7 +17,8 @@
                         <small *ngIf="email.errors?.['required']">Email Id is required</small>
                         <small *ngIf="email.errors?.['email']">Email Id is invalid</small>
                     </div>
-                    <button type="submit" class="login-btn">Submit</button>
+                    <button type="submit" class="login-btn">Submit</button><br>
+                    <p>Don't have an account? <a routerLink="/register">Sign Up</a></p>
                 </div>
             </form>
         </div>

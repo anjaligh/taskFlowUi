@@ -1,0 +1,43 @@
+<div class="container-fluid page-center">
+    <div class="login-container">
+        <div class="form-section" *ngIf="signupForm">
+            <h3>Sign Up</h3>
+            <p>Connect your tools and eliminate repetitive tasks in seconds</p>
+            <form [formGroup]="signupForm" (ngSubmit)="signup()">
+                <div class="login-form">
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" class="form-control inp-field shadow-sm" formControlName="emailId"
+                            placeholder="Email">
+                    </div>
+                    <div class="error" *ngIf="submitted && form['emailId'].invalid">
+                        <small *ngIf="form['emailId'].errors?.['required']">Email Id is required</small>
+                        <small *ngIf="form['emailId'].errors?.['email']">Email Id is invalid</small>
+                    </div>
+                    <br>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" class="form-control inp-field shadow-sm" formControlName="username"
+                            placeholder="Username">
+                    </div>
+                    <div class="error" *ngIf="submitted && form['username'].invalid">
+                        <small *ngIf="form['username'].errors?.['required']">Username is required</small>
+                        <small *ngIf="form['username'].errors?.['pattern']">Username is invalid</small>
+                    </div>
+                    <br>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-key"></i>
+                        <input type="password" class="form-control inp-field shadow-sm" formControlName="password"
+                            placeholder="Password">
+                    </div>
+                    <div class="error" *ngIf="submitted && form['password'].invalid">
+                        <small *ngIf="form['password'].errors?.['required']">Password is required</small>
+                        <small *ngIf="form['password'].errors?.['pattern']">Password should contain an uppercase, lowercase, number and a special character</small>
+                        <small *ngIf="form['password'].errors?.['minLength']">Password should contain at least 8 characters</small>
+                    </div>
+                    <button type="submit" class="login-btn">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
